@@ -5,3 +5,6 @@ sudo apt install -y cloud-guest-utils && sudo swapoff -a && sudo parted /dev/sda
 
 
 sudo apt install -y cloud-guest-utils parted && sudo swapoff -a && sudo parted /dev/sda --script rm 5 rm 2 && sudo growpart /dev/sda 1 && sudo resize2fs /dev/sda1 && df -h /
+
+
+sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && sudo sed -i '/\sswap\s/d' /etc/fstab && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab && swapon --show
