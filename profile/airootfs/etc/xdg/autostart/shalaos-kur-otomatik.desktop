@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ShalaOS Kurucu (otomatik)
+Comment=Boot menüsünden "ShalaOS'u kur" seçildiyse kurucuyu başlatır
+Exec=/usr/local/bin/shalaos-kur-otomatik
+Icon=shalaos
+Terminal=false
+X-KDE-autostart-after=panel
+OnlyShowIn=KDE;

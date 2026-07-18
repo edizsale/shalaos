@@ -28,3 +28,9 @@ fi
 if [ -f /usr/local/share/shalaos/watermark.png ] && [ -d /usr/share/plymouth/themes/spinner ]; then
     install -m644 /usr/local/share/shalaos/watermark.png /usr/share/plymouth/themes/spinner/watermark.png
 fi
+
+# Calamares paketinin kendi menu girdisini gizle; tek girdi "ShalaOS'u Kur" kalsin
+# (paketinki yetkisiz baslatiyor, kurulum "root degil" diye takiliyor).
+if [ -f /usr/share/applications/calamares.desktop ]; then
+    printf 'NoDisplay=true\n' >> /usr/share/applications/calamares.desktop
+fi

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Boot menusunden "ShalaOS'u kur" secildiyse (kernel parametresi shalaos.kur)
+# masaustu acilinca kurucuyu otomatik baslatir.
+grep -qw 'shalaos.kur' /proc/cmdline || exit 0
+exec /usr/local/bin/shalaos-kur

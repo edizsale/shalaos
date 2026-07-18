@@ -81,7 +81,11 @@ Açılışta ve masaüstünde şunları doğrula, sonucu bana getir:
 
 ### Kurulum testi (Aşama 3 sonrası)
 
-- [ ] Uygulama menüsünde **"ShalaOS'u Kur"** var ve açılıyor (koyu, ShalaOS logolu kurucu)
+- [ ] Boot menüsünde **"ShalaOS'u kur"** girdisi var; seçilince masaüstü açılıp kurucu
+      KENDİLİĞİNDEN başlıyor
+- [ ] Uygulama menüsünde **tek** kurucu girdisi var: "ShalaOS'u Kur" (paketin kendi
+      "Calamares" girdisi görünmemeli) ve yönetici uyarısı VERMEDEN açılıyor
+- [ ] Kurulum test VM'inin diski en az 25 GB olmalı (kurucu 15 GB altını reddeder)
 - [ ] Kurucu Türkçe; bölge/saat dilimi İstanbul, klavye tr geliyor
 - [ ] "Diski sil" ile kurulum baştan sona hatasız bitiyor
 - [ ] Yeniden başlatınca (ISO'yu çıkar!) GRUB menüsünde **ShalaOS** yazıyor

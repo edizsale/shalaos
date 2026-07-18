@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# ShalaOS kurucusunu (Calamares) root olarak baslatir.
+# Canli kullanici shala sifresiz sudo'lu oldugu icin parola sorulmaz.
+if [ "$(id -u)" -ne 0 ]; then
+    exec sudo -E "$0" "$@"
+fi
+# Wayland oturumunda root Qt uygulamasi icin once wayland, olmazsa xcb dene.
+export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-wayland;xcb}"
+exec calamares "$@"
