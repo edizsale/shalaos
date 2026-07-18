@@ -17,4 +17,9 @@ mkdir -p "$AIROOTFS/usr/share/plasma/look-and-feel"
 cp -rT "$DARDANIA/look-and-feel/org.shalaos.dardania" \
     "$AIROOTFS/usr/share/plasma/look-and-feel/org.shalaos.dardania"
 
+rm -rf "$AIROOTFS/usr/share/aurorae/themes/dardania"
+mkdir -p "$AIROOTFS/usr/share/aurorae/themes"
+cp -rT "$DARDANIA/aurorae/dardania" \
+    "$AIROOTFS/usr/share/aurorae/themes/dardania"
+
 echo "dardania senkronlandi."

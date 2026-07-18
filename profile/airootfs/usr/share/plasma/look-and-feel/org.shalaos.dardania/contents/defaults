@@ -15,7 +15,10 @@ name=breeze-dark
 Image=ShalaOS
 
 [kwinrc][org.kde.kdecoration2]
-library=org.kde.breeze
+library=org.kde.kwin.aurorae
+theme=__aurorae__svg__dardania
+ButtonsOnLeft=XIA
+ButtonsOnRight=
 
 [ksplashrc][KSplash]
 Theme=org.shalaos.dardania

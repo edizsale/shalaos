@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Dardania
+Comment=ShalaOS pencere dekorasyonu (WhiteSur-dark tabanlı)
+X-KDE-PluginInfo-Author=ShalaOS, Vince Liuice (WhiteSur temeli)
+X-KDE-PluginInfo-Name=dardania
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-License=GPL v3
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-ServiceTypes=aurorae
+Type=Service

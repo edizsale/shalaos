@@ -1,0 +1,24 @@
+{
+    "KPackageStructure": "aurorae",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "ShalaOS"
+            },
+            {
+                "Email": "vinceliuice@hotmail.com",
+                "Name": "Vince Liuice (WhiteSur temeli)"
+            }
+        ],
+        "Category": "Plasma 6 Window Decorations",
+        "ServiceTypes": [
+            "aurorae"
+        ],
+        "EnabledByDefault": true,
+        "Name": "Dardania",
+        "Description": "ShalaOS pencere dekorasyonu (WhiteSur-dark tabanli trafik isigi dugmeler)",
+        "Id": "dardania",
+        "License": "GPL v3",
+        "Version": "1.0"
+    }
+}
