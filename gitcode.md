@@ -2,3 +2,6 @@ NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS                                     
 
 
 sudo apt install -y cloud-guest-utils && sudo swapoff -a && sudo parted /dev/sda --script rm 5 rm 2 && sudo growpart /dev/sda 1 && sudo resize2fs /dev/sda1 && df -h /
+
+
+sudo apt install -y cloud-guest-utils parted && sudo swapoff -a && sudo parted /dev/sda --script rm 5 rm 2 && sudo growpart /dev/sda 1 && sudo resize2fs /dev/sda1 && df -h /
