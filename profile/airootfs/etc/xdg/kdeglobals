@@ -1,0 +1,6 @@
+[KDE]
+LookAndFeelPackage=org.shalaos.dardania
+
+[General]
+ColorScheme=BreezeDark
+AccentColor=228,20,30

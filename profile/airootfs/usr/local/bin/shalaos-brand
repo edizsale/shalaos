@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# ShalaOS kimligi: filesystem/glibc paketleri kurulduktan sonra pacman hook'u
+# olarak calisir (bkz. /etc/pacman.d/hooks/zz01-shalaos-branding.hook).
+# os-release paket sahibi oldugu icin airootfs'ten dogrudan ezilemez; burada yazilir.
+set -euo pipefail
+
+cat > /usr/lib/os-release <<'EOF'
+NAME="ShalaOS"
+PRETTY_NAME="ShalaOS"
+ID=shalaos
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;228;20;30"
+HOME_URL="https://github.com/edizsale/shalaos"
+LOGO=shalaos
+EOF
+
+if command -v locale-gen >/dev/null 2>&1; then
+    locale-gen
+fi

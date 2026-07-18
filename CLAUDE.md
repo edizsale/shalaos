@@ -1,8 +1,10 @@
 # ShalaOS
 
-Arch Linux tabanlı, GNOME masaüstülü özel Linux dağıtımı. Abinti'nin (Debian/XFCE alpha,
-saf haliyle korunuyor — o repoya DOKUNMA) devamı olan proje. Hedef görünüm: macOS esintisi —
-GNOME + GDM + dash-to-dock + özel "dardania" GTK teması (WhiteSur-gtk-theme fork'u, ayrı repo).
+Arch Linux tabanlı, **KDE Plasma** masaüstülü özel Linux dağıtımı. Abinti'nin (Debian/XFCE
+alpha, saf haliyle korunuyor — o repoya DOKUNMA) devamı olan proje. Kimlik: kırmızı kartal
+logo + siyah zemin; hedef görünüm koyu + kırmızı vurgulu **"dardania"** Plasma Global Teması
+(Breeze Dark tabanı, AccentColor 228,20,30). GNOME'dan bilinçli vazgeçildi (tema özgürlüğü
+düşük); kullanıcı "her yerde ShalaOS görünsün" istiyor.
 
 ## Mimari
 
@@ -14,8 +16,22 @@ GNOME + GDM + dash-to-dock + özel "dardania" GTK teması (WhiteSur-gtk-theme fo
   - `profiledef.sh` — ISO adı/etiketi, sıkıştırma, `file_permissions` (airootfs'e eklenen
     her özel izinli dosya buraya da işlenmeli, yoksa izinler kaybolur).
   - `packages.x86_64` — canlı sisteme kurulan paketler (tek sütun, alfabetik).
-  - `airootfs/` — canlı sisteme kopyalanan dosyalar (includes.chroot karşılığı).
-    Hook/chroot-script mekanizması YOK; özel işler systemd unit veya pacman hook ile yapılır.
+  - `airootfs/` — canlı sisteme kopyalanan dosyalar (includes.chroot karşılığı). DİKKAT:
+    airootfs paket kurulumundan ÖNCE kopyalanır (live-build'in tersi!). Paket sahibi dosyalar
+    (os-release gibi) airootfs'ten ezilemez — pacman hook ile yazılır:
+    `etc/pacman.d/hooks/zz01-shalaos-branding.hook` → `usr/local/bin/shalaos-brand`
+    (os-release + locale-gen). Yeni özel-izinli dosya eklersen `profiledef.sh`
+    `file_permissions`'a da işle.
+  - Canlı kullanıcı: `shala` (passwd/shadow/group/gshadow'da elle tanımlı, ArchWiki
+    canlı-kullanıcı deseni; wheel + NOPASSWD sudo). SDDM otomatik girişi
+    `etc/sddm.conf.d/shalaos.conf`. mkarchiso, passwd'deki kullanıcı için home'u kendisi açar.
+  - Kimlik dosyaları: logo `usr/share/pixmaps/shalaos-logo.png` (+ hicolor ikonları),
+    duvar kağıdı `usr/share/wallpapers/ShalaOS/` (Plasma duvar kağıdı paketi), dardania
+    iskeleti `usr/share/plasma/look-and-feel/org.shalaos.dardania/`, sistem geneli varsayılan
+    `etc/xdg/kdeglobals`. SDDM arkaplanı `usr/share/sddm/themes/breeze/theme.conf.user`.
+    Kaynak görseller: `~/Masaüstü/Projelerim/ShalaOS/ShalaOS_{Logo,Wallpaper}.png`.
+  - BIOS boot menüsünde Türkçe karakter KULLANMA (Abinti dersi, isolinux/syslinux UTF-8
+    render edemez) — "ShalaOS canli ortami" gibi ASCII yaz.
   - `grub/`, `efiboot/`, `syslinux/` — boot menüleri (UEFI + BIOS).
 - `Dockerfile` + `build.sh` — Abinti'deki düzenin aynısı, içerik mkarchiso'ya göre.
   mkarchiso work dizini kasten container içinde tutulur (volume değil).
@@ -35,9 +51,9 @@ kullanıcıya silme komutu verirken `sudo rm -rf` öner.
 ## Yol haritası (plan: ~/.claude/plans/pure-weaving-scone.md)
 
 1. ~~Aşama 0: repo kurulumu~~ / ~~Aşama 1: build iskeleti (releng tabanı)~~
-2. Aşama 2: GNOME canlı ortam (packages.x86_64 + GDM autologin + TR yerel + ShalaOS kimliği)
+2. ~~Aşama 2: KDE Plasma canlı ortam + ShalaOS kimliği + TR yerel~~ (VM build testi bekliyor)
 3. Aşama 3: Calamares (AUR'dan derleme veya EndeavourOS binary deposu — kullanıcıya sorulacak)
-4. Aşama 4: dardania teması + macOS düzeni (dconf varsayılanları `airootfs/etc/dconf/db/local.d/`)
+4. Aşama 4: dardania tam teması (renk şeması, Plasma stili, ikonlar; iskelet hazır) — ayrı repo
 5. Aşama 5: VMware test + gerçek donanım (Acer'da Abinti var, ÜZERİNE YAZILMAZ)
 
 ## Kullanıcı hakkında

@@ -1,0 +1,16 @@
+{
+    "KPlugin": {
+        "Id": "org.shalaos.dardania",
+        "Name": "Dardania",
+        "Description": "ShalaOS koyu-kirmizi gorunumu",
+        "Authors": [
+            {
+                "Name": "ShalaOS"
+            }
+        ],
+        "License": "GPL-3.0-or-later",
+        "Website": "https://github.com/edizsale/shalaos"
+    },
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "X-Plasma-APIVersion": "2"
+}

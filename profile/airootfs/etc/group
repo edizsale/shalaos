@@ -1,0 +1,6 @@
+root:x:0:root
+adm:x:4:shala
+wheel:x:10:shala
+uucp:x:14:shala
+optical:x:963:shala
+shala:x:1000:

@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = filesystem
+Target = glibc
+
+[Action]
+Description = ShalaOS kimligi uygulaniyor...
+When = PostTransaction
+Depends = bash
+Exec = /usr/local/bin/shalaos-brand

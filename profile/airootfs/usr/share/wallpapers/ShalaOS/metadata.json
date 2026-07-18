@@ -1,0 +1,12 @@
+{
+    "KPlugin": {
+        "Id": "ShalaOS",
+        "Name": "ShalaOS",
+        "License": "CC-BY-SA-4.0",
+        "Authors": [
+            {
+                "Name": "ShalaOS"
+            }
+        ]
+    }
+}

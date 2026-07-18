@@ -1,6 +1,6 @@
 # ShalaOS
 
-Arch Linux tabanlı, GNOME masaüstülü, macOS esintili özel Linux dağıtımı.
+Arch Linux tabanlı, KDE Plasma masaüstülü, koyu-kırmızı "dardania" temalı özel Linux dağıtımı.
 
 ## Build (Debian VM içinde)
 
