@@ -4,6 +4,13 @@
 if [ "$(id -u)" -ne 0 ]; then
     exec sudo -E "$0" "$@"
 fi
+# copytoram ile acildiysa squashfs RAM'dedir, bootmnt yolu olmaz;
+# unpackfs kaynagini gercekte var olan yola cevir.
+if [ -f /run/archiso/copytoram/airootfs.sfs ]; then
+    sed -i 's|source: /run/archiso/bootmnt/arch/x86_64/airootfs.sfs|source: /run/archiso/copytoram/airootfs.sfs|' \
+        /etc/calamares/modules/unpackfs.conf
+fi
+
 # Wayland oturumunda root Qt uygulamasi icin once wayland, olmazsa xcb dene.
 export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-wayland;xcb}"
 exec calamares "$@"
