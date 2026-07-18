@@ -94,7 +94,7 @@ Açılışta ve masaüstünde şunları doğrula, sonucu bana getir:
       (VM'i UEFI ile kurduysan üretici logosu da üstte durur; kaydırmalı metin GÖRÜNMEMELİ)
 - [ ] İlk girişte **"ShalaOS'e Hoş Geldiniz" sayfası** açılıyor (Chromium penceresi);
       "Başla" ile kapanıyor ve bir sonraki girişte BİR DAHA gelmiyor
-- [ ] Chromium menüde var ve açılıyor (canlıda da olmalı)
+- [ ] Chromium menüde var ve açılıyor (Firefox artık YOK, varsayılan tarayıcı Chromium)
 - [ ] `cat /etc/os-release` → ShalaOS; uygulama menüsünde "ShalaOS'u Kur" artık YOK
 - [ ] `sudo pacman -Syu` çalışıyor (EndeavourOS deposu silinmiş olmalı:
       `grep -c endeavouros /etc/pacman.conf` → 0)
