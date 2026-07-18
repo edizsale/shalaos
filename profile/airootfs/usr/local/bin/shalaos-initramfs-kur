@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Calamares'in initramfs adimi (hedef sistemde chroot icinde calisir).
+# mkarchiso ISO kucultmek icin airootfs /boot'unu bosaltir; cekirdek
+# /usr/lib/modules'teki kopyadan geri konur, archiso preset'i standartla
+# degistirilir ve initramfs uretilir.
+set -e
+
+rm -f /etc/mkinitcpio.conf.d/archiso.conf
+
+kver="$(ls -1 /usr/lib/modules | head -n1)"
+install -Dm644 "/usr/lib/modules/${kver}/vmlinuz" /boot/vmlinuz-linux
+
+cat > /etc/mkinitcpio.d/linux.preset <<'EOF'
+# mkinitcpio preset file for the 'linux' package
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+default_image="/boot/initramfs-linux.img"
+
+fallback_image="/boot/initramfs-linux-fallback.img"
+fallback_options="-S autodetect"
+EOF
+
+mkinitcpio -P
+
+# Kurulan sistemde bu script'e artik gerek yok
+rm -f /usr/local/bin/shalaos-initramfs-kur
