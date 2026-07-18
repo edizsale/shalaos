@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Kurulan sistemde ilk giriste hos geldin sayfasini acar; bir kere gosterir.
+# Canli ortamda (shala kullanicisi) hic gorunmez.
+set -u
+
+[ "${USER:-}" = "shala" ] && exit 0
+
+BAYRAK="${XDG_CONFIG_HOME:-$HOME/.config}/shalaos-hosgeldiniz-gosterildi"
+[ -e "$BAYRAK" ] && exit 0
+mkdir -p "$(dirname "$BAYRAK")" && touch "$BAYRAK"
+
+SAYFA="/usr/share/shalaos/hosgeldiniz/index.html"
+if command -v chromium >/dev/null 2>&1; then
+    exec chromium --app="file://$SAYFA" --window-size=1000,760 --class=shalaos-hosgeldiniz
+else
+    exec xdg-open "file://$SAYFA"
+fi

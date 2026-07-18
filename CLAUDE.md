@@ -25,6 +25,12 @@ düşük); kullanıcı "her yerde ShalaOS görünsün" istiyor.
   - Canlı kullanıcı: `shala` (passwd/shadow/group/gshadow'da elle tanımlı, ArchWiki
     canlı-kullanıcı deseni; wheel + NOPASSWD sudo). SDDM otomatik girişi
     `etc/sddm.conf.d/shalaos.conf`. mkarchiso, passwd'deki kullanıcı için home'u kendisi açar.
+  - Hoş geldin sayfası: `usr/share/shalaos/hosgeldiniz/index.html`, açan script
+    `usr/local/bin/shalaos-hosgeldiniz` (autostart ile; canlıdaki shala kullanıcısında ve
+    ikinci girişte çalışmaz — bayrak dosyası `~/.config/shalaos-hosgeldiniz-gosterildi`).
+  - Panel düzeni + başlat düğmesi logosu: dardania LNF içindeki
+    `contents/layouts/org.kde.plasma.desktop-layout.js` (kickoff icon=shalaos). Plasma bunu
+    yalnızca İLK açılışta (boş plasma-org.kde.plasma.desktop-appletsrc) uygular.
   - Kimlik dosyaları: logo `usr/share/pixmaps/shalaos-logo.png` (+ hicolor ikonları),
     duvar kağıdı `usr/share/wallpapers/ShalaOS/` (Plasma duvar kağıdı paketi), dardania
     iskeleti `usr/share/plasma/look-and-feel/org.shalaos.dardania/`, sistem geneli varsayılan

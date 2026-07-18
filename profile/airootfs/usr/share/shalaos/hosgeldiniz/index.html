@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>ShalaOS'e Hoş Geldiniz</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans", sans-serif;
+    background: radial-gradient(ellipse at top, #1c1214 0%, #0d0d0f 55%, #0a0a0c 100%);
+    color: #f2f2f2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+  }
+  .kart { max-width: 780px; text-align: center; }
+  .logo { width: 168px; height: 168px; margin-bottom: 18px;
+          filter: drop-shadow(0 0 34px rgba(228, 20, 30, .35)); }
+  h1 { font-size: 30px; font-weight: 700; letter-spacing: .5px; margin-bottom: 6px; }
+  h1 .os { color: #e4141e; }
+  .rozet {
+    display: inline-block; margin: 10px 0 22px; padding: 5px 14px;
+    border: 1px solid rgba(228,20,30,.55); border-radius: 999px;
+    color: #ff5b63; font-size: 12.5px; letter-spacing: 2px; text-transform: uppercase;
+  }
+  p.metin { font-size: 16.5px; line-height: 1.75; color: #d8d8dc; margin: 0 auto 30px; max-width: 640px; }
+  .ozellikler { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 34px; }
+  .ozellik {
+    flex: 1 1 200px; max-width: 230px; padding: 18px 16px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px; text-align: left;
+  }
+  .ozellik b { display: block; color: #ff5b63; font-size: 14.5px; margin-bottom: 6px; }
+  .ozellik span { font-size: 13.5px; line-height: 1.55; color: #b9b9c0; }
+  .basla {
+    display: inline-block; padding: 13px 46px; font-size: 16px; font-weight: 600;
+    color: #fff; background: linear-gradient(180deg, #ef2430, #c40f19);
+    border: none; border-radius: 10px; cursor: pointer;
+    box-shadow: 0 6px 24px rgba(228,20,30,.35);
+  }
+  .basla:hover { background: linear-gradient(180deg, #ff3540, #d31520); }
+  .dip { margin-top: 22px; font-size: 12.5px; color: #6d6d75; }
+</style>
+</head>
+<body>
+  <div class="kart">
+    <img class="logo" src="/usr/share/pixmaps/shalaos-logo.png" alt="ShalaOS logosu">
+    <h1>Shala<span class="os">OS</span>'e Hoş Geldiniz</h1>
+    <div class="rozet">Özgür &bull; Stabil &bull; Minimalist</div>
+    <p class="metin">
+      Tamamen özgür ve stabil işletim sistemi ShalaOS'e hoş geldiniz.
+      Sizlerin yardımlarıyla gelişecek bu işletim sistemimiz tamamen rahatlık ve
+      minimalizm üzerine, Arch Linux tabanlı olarak geliştirilmiştir.
+    </p>
+    <div class="ozellikler">
+      <div class="ozellik">
+        <b>Daima Güncel</b>
+        <span>Arch Linux'un sürekli akan (rolling) yapısı sayesinde sisteminiz hep en yenisidir; tek komut: <i>sudo pacman -Syu</i></span>
+      </div>
+      <div class="ozellik">
+        <b>Dardania Görünümü</b>
+        <span>Göz yormayan koyu tema ve kırmızı vurgularıyla ShalaOS'e özel tasarım, kutudan çıktığı gibi hazır.</span>
+      </div>
+      <div class="ozellik">
+        <b>Sade ve Rahat</b>
+        <span>Gereksiz hiçbir şey yok; ihtiyacınız olan her şey KDE Plasma'nın esnekliğiyle elinizin altında.</span>
+      </div>
+    </div>
+    <button class="basla" onclick="window.close()">Başla</button>
+    <div class="dip">Bu sayfa yalnızca ilk girişte gösterilir. &bull; ShalaOS</div>
+  </div>
+</body>
+</html>

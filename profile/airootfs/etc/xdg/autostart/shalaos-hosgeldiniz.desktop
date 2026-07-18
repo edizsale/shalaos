@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ShalaOS Hoş Geldiniz
+Comment=İlk girişte ShalaOS tanıtım sayfasını gösterir
+Exec=/usr/local/bin/shalaos-hosgeldiniz
+Icon=shalaos
+Terminal=false
+X-KDE-autostart-after=panel
+OnlyShowIn=KDE;

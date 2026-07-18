@@ -89,6 +89,10 @@ Açılışta ve masaüstünde şunları doğrula, sonucu bana getir:
       kurulumda verdiğin kullanıcıyla açılıyor
 - [ ] Kurulan sistemde `shala` kullanıcısı YOK (`id shala` → "no such user" demeli)
 - [ ] Koyu tema + duvar kağıdı kurulan sistemde de geliyor
+- [ ] Panelin sol altındaki **başlat düğmesi ShalaOS logosu** (KDE simgesi değil)
+- [ ] İlk girişte **"ShalaOS'e Hoş Geldiniz" sayfası** açılıyor (Chromium penceresi);
+      "Başla" ile kapanıyor ve bir sonraki girişte BİR DAHA gelmiyor
+- [ ] Chromium menüde var ve açılıyor (canlıda da olmalı)
 - [ ] `cat /etc/os-release` → ShalaOS; uygulama menüsünde "ShalaOS'u Kur" artık YOK
 - [ ] `sudo pacman -Syu` çalışıyor (EndeavourOS deposu silinmiş olmalı:
       `grep -c endeavouros /etc/pacman.conf` → 0)
