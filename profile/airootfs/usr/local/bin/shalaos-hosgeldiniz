@@ -3,7 +3,7 @@
 # Canli ortamda (shala kullanicisi) hic gorunmez.
 set -u
 
-[ "${USER:-}" = "shala" ] && exit 0
+[ "$(id -un)" = "shala" ] && exit 0
 
 BAYRAK="${XDG_CONFIG_HOME:-$HOME/.config}/shalaos-hosgeldiniz-gosterildi"
 [ -e "$BAYRAK" ] && exit 0
