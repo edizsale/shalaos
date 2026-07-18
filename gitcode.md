@@ -13,3 +13,6 @@ sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapf
 sudo swapon --show && grep swapfile /etc/fstab
 
 echo 'RESUME=none' | sudo tee /etc/initramfs-tools/conf.d/resume && sudo update-initramfs -u
+
+
+cd ~ && sudo rm -rf shalaos-build && rm -f shalaos-build.tar.gz && gh release download v1 --repo edizsale/shalaos --pattern shalaos-build.tar.gz && tar xzf shalaos-build.tar.gz && cd shalaos-build && ./build.sh
