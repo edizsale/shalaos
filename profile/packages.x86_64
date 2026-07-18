@@ -156,3 +156,10 @@ sddm-kcm
 spectacle
 wireplumber
 xdg-desktop-portal-kde
+
+# ShalaOS kurucu (Aşama 3)
+calamares
+dosfstools
+efibootmgr
+grub
+networkmanager

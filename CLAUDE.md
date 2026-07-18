@@ -35,7 +35,15 @@ düşük); kullanıcı "her yerde ShalaOS görünsün" istiyor.
   - `grub/`, `efiboot/`, `syslinux/` — boot menüleri (UEFI + BIOS).
 - `Dockerfile` + `build.sh` — Abinti'deki düzenin aynısı, içerik mkarchiso'ya göre.
   mkarchiso work dizini kasten container içinde tutulur (volume değil).
-- Calamares Arch resmi depolarında YOK (AUR'da var) — Aşama 3'te çözülecek.
+- Calamares Arch resmi depolarında YOK — **EndeavourOS binary deposundan** geliyor
+  (kullanıcı kararı; `pacman.conf`'ta SHALAOS-EOS-BASLA/BITIR işaretli blok, SigLevel Never).
+  Kurulan sistemden Calamares'in `shellprocess@cleanup` adımı bu bloğu ve tüm canlı-ortam
+  kalıntılarını (shala kullanıcısı, autologin, archiso mkinitcpio conf'u) siler.
+- Calamares yapılandırması: `airootfs/etc/calamares/` (settings.conf + modules/ + branding/shalaos/).
+  Kurulum sırası: unpackfs squashfs'i `/run/archiso/bootmnt/arch/x86_64/airootfs.sfs`'ten
+  kopyalar (install_dir değişirse burayı da değiştir!). GRUB canlıda önceden kurulu
+  (Abinti dersi: internetsiz kurulum bootloader'da patlamasın). Menü girişi:
+  `usr/share/applications/shalaos-kur.desktop` (`sudo -E calamares`).
 
 ## İş akışı
 
@@ -52,7 +60,7 @@ kullanıcıya silme komutu verirken `sudo rm -rf` öner.
 
 1. ~~Aşama 0: repo kurulumu~~ / ~~Aşama 1: build iskeleti (releng tabanı)~~
 2. ~~Aşama 2: KDE Plasma canlı ortam + ShalaOS kimliği + TR yerel~~ (VM build testi bekliyor)
-3. Aşama 3: Calamares (AUR'dan derleme veya EndeavourOS binary deposu — kullanıcıya sorulacak)
+3. ~~Aşama 3: Calamares (EndeavourOS binary deposu)~~ (VM kurulum testi bekliyor)
 4. Aşama 4: dardania tam teması (renk şeması, Plasma stili, ikonlar; iskelet hazır) — ayrı repo
 5. Aşama 5: VMware test + gerçek donanım (Acer'da Abinti var, ÜZERİNE YAZILMAZ)
 

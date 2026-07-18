@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=ShalaOS'u Kur
+Name[en]=Install ShalaOS
+GenericName=Sistem Kurucusu
+Comment=ShalaOS'u bu bilgisayara kur
+Exec=sudo -E calamares
+Icon=shalaos
+Terminal=false
+Categories=Qt;System;
+StartupNotify=true

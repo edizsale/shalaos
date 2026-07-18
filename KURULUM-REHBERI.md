@@ -79,6 +79,20 @@ Açılışta ve masaüstünde şunları doğrula, sonucu bana getir:
       şifresiz sudo'yu doğrula, Ctrl+C ile kes)
 - [ ] Ağ çalışıyor (Firefox ile bir site aç)
 
+### Kurulum testi (Aşama 3 sonrası)
+
+- [ ] Uygulama menüsünde **"ShalaOS'u Kur"** var ve açılıyor (koyu, ShalaOS logolu kurucu)
+- [ ] Kurucu Türkçe; bölge/saat dilimi İstanbul, klavye tr geliyor
+- [ ] "Diski sil" ile kurulum baştan sona hatasız bitiyor
+- [ ] Yeniden başlatınca (ISO'yu çıkar!) GRUB menüsünde **ShalaOS** yazıyor
+- [ ] Kurulan sistem SDDM'de **şifre soruyor** (otomatik giriş OLMAMALI) ve senin
+      kurulumda verdiğin kullanıcıyla açılıyor
+- [ ] Kurulan sistemde `shala` kullanıcısı YOK (`id shala` → "no such user" demeli)
+- [ ] Koyu tema + duvar kağıdı kurulan sistemde de geliyor
+- [ ] `cat /etc/os-release` → ShalaOS; uygulama menüsünde "ShalaOS'u Kur" artık YOK
+- [ ] `sudo pacman -Syu` çalışıyor (EndeavourOS deposu silinmiş olmalı:
+      `grep -c endeavouros /etc/pacman.conf` → 0)
+
 ## 4) Temizlik (istersen)
 
 Build bittikten sonra yer açmak için:
