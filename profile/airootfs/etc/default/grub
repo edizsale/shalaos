@@ -1,0 +1,16 @@
+# ShalaOS GRUB varsayilanlari. EOS calamares'in grubcfg modulu kullanilmiyor
+# (gsName ister); bu dosya dogrudan ISO'ya konur, bootloader modulu
+# grub-mkconfig ile bunu okur.
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="ShalaOS"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 vt.global_cursor_default=0"
+GRUB_CMDLINE_LINUX=""
+GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+GRUB_TIMEOUT_STYLE=menu
+GRUB_TERMINAL_INPUT=console
+GRUB_GFXMODE=auto
+GRUB_GFXPAYLOAD_LINUX=keep
+GRUB_DISABLE_RECOVERY=true
+GRUB_DISABLE_SUBMENU=y
+GRUB_SAVEDEFAULT=true
