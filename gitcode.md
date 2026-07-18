@@ -8,3 +8,8 @@ sudo apt install -y cloud-guest-utils parted && sudo swapoff -a && sudo parted /
 
 
 sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile && sudo sed -i '/\sswap\s/d' /etc/fstab && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab && swapon --show
+
+
+sudo swapon --show && grep swapfile /etc/fstab
+
+echo 'RESUME=none' | sudo tee /etc/initramfs-tools/conf.d/resume && sudo update-initramfs -u
