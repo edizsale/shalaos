@@ -53,7 +53,9 @@ düşük); kullanıcı "her yerde ShalaOS görünsün" istiyor.
 - Calamares yapılandırması: `airootfs/usr/local/share/shalaos/calamares/` (settings.conf +
   modules/ + branding/shalaos/). `/etc/calamares`'e DOĞRUDAN KOYMA — EOS calamares paketi
   kendi modül conf'larını orada taşıyor, pacstrap "exists in filesystem" ile patlar
-  (doğrulandı). shalaos-brand hook'u paketlerden sonra `/etc/calamares`'e kopyalar; Plymouth
+  (doğrulandı). shalaos-brand hook'u paketlerden sonra `/etc/calamares`'e kopyalar; EOS paketinde
+  initcpio/initcpiocfg modülleri YOK (doğrulandı) — initramfs `shellprocess@initramfs`
+  (`mkinitcpio -P`) ile üretilir. Plymouth
   filigranı da aynı yoldan gider (`usr/local/share/shalaos/watermark.png`).
   Kurulum sırası: unpackfs squashfs'i `/run/archiso/bootmnt/arch/x86_64/airootfs.sfs`'ten
   kopyalar (install_dir değişirse burayı da değiştir!). GRUB canlıda önceden kurulu
