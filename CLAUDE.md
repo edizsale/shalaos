@@ -25,6 +25,11 @@ düşük); kullanıcı "her yerde ShalaOS görünsün" istiyor.
   - Canlı kullanıcı: `shala` (passwd/shadow/group/gshadow'da elle tanımlı, ArchWiki
     canlı-kullanıcı deseni; wheel + NOPASSWD sudo). SDDM otomatik girişi
     `etc/sddm.conf.d/shalaos.conf`. mkarchiso, passwd'deki kullanıcı için home'u kendisi açar.
+  - Açılış ekranı (Plymouth): tema `bgrt` (UEFI'de üretici logosu altında ShalaOS filigranı;
+    filigran `usr/share/plymouth/themes/spinner/watermark.png`). Yalnızca KURULAN sistemde
+    aktif: `etc/mkinitcpio.conf.d/10-shalaos-plymouth.conf` HOOKS'u tanımlar ama canlıda
+    alfabetik sonra gelen `archiso.conf` onu ezer; Calamares temizliği archiso.conf'u silince
+    kurulan sistemde geçerli olur. `splash` parametresi grubcfg.conf'tan gelir.
   - Hoş geldin sayfası: `usr/share/shalaos/hosgeldiniz/index.html`, açan script
     `usr/local/bin/shalaos-hosgeldiniz` (autostart ile; canlıdaki shala kullanıcısında ve
     ikinci girişte çalışmaz — bayrak dosyası `~/.config/shalaos-hosgeldiniz-gosterildi`).
