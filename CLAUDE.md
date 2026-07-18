@@ -26,7 +26,7 @@ düşük); kullanıcı "her yerde ShalaOS görünsün" istiyor.
     canlı-kullanıcı deseni; wheel + NOPASSWD sudo). SDDM otomatik girişi
     `etc/sddm.conf.d/shalaos.conf`. mkarchiso, passwd'deki kullanıcı için home'u kendisi açar.
   - Açılış ekranı (Plymouth): tema `bgrt` (UEFI'de üretici logosu altında ShalaOS filigranı;
-    filigran `usr/share/plymouth/themes/spinner/watermark.png`). Yalnızca KURULAN sistemde
+    filigran kaynağı `usr/local/share/shalaos/watermark.png`, hook spinner temasına kopyalar). Yalnızca KURULAN sistemde
     aktif: `etc/mkinitcpio.conf.d/10-shalaos-plymouth.conf` HOOKS'u tanımlar ama canlıda
     alfabetik sonra gelen `archiso.conf` onu ezer; Calamares temizliği archiso.conf'u silince
     kurulan sistemde geçerli olur. `splash` parametresi grubcfg.conf'tan gelir.
@@ -50,7 +50,11 @@ düşük); kullanıcı "her yerde ShalaOS görünsün" istiyor.
   (kullanıcı kararı; `pacman.conf`'ta SHALAOS-EOS-BASLA/BITIR işaretli blok, SigLevel Never).
   Kurulan sistemden Calamares'in `shellprocess@cleanup` adımı bu bloğu ve tüm canlı-ortam
   kalıntılarını (shala kullanıcısı, autologin, archiso mkinitcpio conf'u) siler.
-- Calamares yapılandırması: `airootfs/etc/calamares/` (settings.conf + modules/ + branding/shalaos/).
+- Calamares yapılandırması: `airootfs/usr/local/share/shalaos/calamares/` (settings.conf +
+  modules/ + branding/shalaos/). `/etc/calamares`'e DOĞRUDAN KOYMA — EOS calamares paketi
+  kendi modül conf'larını orada taşıyor, pacstrap "exists in filesystem" ile patlar
+  (doğrulandı). shalaos-brand hook'u paketlerden sonra `/etc/calamares`'e kopyalar; Plymouth
+  filigranı da aynı yoldan gider (`usr/local/share/shalaos/watermark.png`).
   Kurulum sırası: unpackfs squashfs'i `/run/archiso/bootmnt/arch/x86_64/airootfs.sfs`'ten
   kopyalar (install_dir değişirse burayı da değiştir!). GRUB canlıda önceden kurulu
   (Abinti dersi: internetsiz kurulum bootloader'da patlamasın). Menü girişi:

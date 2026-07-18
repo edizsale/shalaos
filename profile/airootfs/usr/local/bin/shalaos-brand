@@ -18,3 +18,13 @@ EOF
 if command -v locale-gen >/dev/null 2>&1; then
     locale-gen
 fi
+
+# Paket sahibi yollara airootfs'ten dogrudan dosya konamaz (pacman "exists in
+# filesystem" ile durur); ShalaOS ayarlari paketler kurulduktan sonra buradan yazilir.
+if [ -d /usr/local/share/shalaos/calamares ]; then
+    mkdir -p /etc/calamares
+    cp -rT /usr/local/share/shalaos/calamares /etc/calamares
+fi
+if [ -f /usr/local/share/shalaos/watermark.png ] && [ -d /usr/share/plymouth/themes/spinner ]; then
+    install -m644 /usr/local/share/shalaos/watermark.png /usr/share/plymouth/themes/spinner/watermark.png
+fi

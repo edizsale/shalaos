@@ -4,6 +4,8 @@ Operation = Upgrade
 Type = Package
 Target = filesystem
 Target = glibc
+Target = calamares
+Target = plymouth
 
 [Action]
 Description = ShalaOS kimligi uygulaniyor...
