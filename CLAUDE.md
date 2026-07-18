@@ -78,7 +78,7 @@ kullanıcıya silme komutu verirken `sudo rm -rf` öner.
 1. ~~Aşama 0: repo kurulumu~~ / ~~Aşama 1: build iskeleti (releng tabanı)~~
 2. ~~Aşama 2: KDE Plasma canlı ortam + ShalaOS kimliği + TR yerel~~ (VM build testi bekliyor)
 3. ~~Aşama 3: Calamares (EndeavourOS binary deposu)~~ — VM kurulum testi GEÇTİ (18 Tem 2026): kurulum uçtan uca, pacman -Syu dahil sorunsuz
-4. Aşama 4: dardania tam teması (renk şeması, Plasma stili, ikonlar; iskelet hazır) — ayrı repo
+4. Aşama 4 v1 TAMAM (18 Tem 2026): dardania ayrı repoda (private `edizsale/dardania`); DardaniaDark renk şeması + LNF + splash. Kaynak orası — ISO kopyasını elle düzenleme, `./sync-dardania.sh` çalıştır. v2 fikirleri: SDDM QML teması, ikon seti, dekorasyon
 5. Aşama 5: VMware test + gerçek donanım (Acer'da Abinti var, ÜZERİNE YAZILMAZ)
 
 ## Kullanıcı hakkında

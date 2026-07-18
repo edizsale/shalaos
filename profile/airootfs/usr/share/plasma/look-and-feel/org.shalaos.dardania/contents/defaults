@@ -2,7 +2,7 @@
 widgetStyle=Breeze
 
 [kdeglobals][General]
-ColorScheme=BreezeDark
+ColorScheme=DardaniaDark
 AccentColor=228,20,30
 
 [kdeglobals][Icons]
@@ -16,3 +16,7 @@ Image=ShalaOS
 
 [kwinrc][org.kde.kdecoration2]
 library=org.kde.breeze
+
+[ksplashrc][KSplash]
+Theme=org.shalaos.dardania
+Engine=KSplashQML
