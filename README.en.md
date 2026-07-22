@@ -41,15 +41,30 @@ The primary language of the distribution and its documentation is **Turkish**.
 - 🔁 **Arch rolling** — stays current with `pacman -Syu` after install.
 - 🔐 **Signed, verifiable ISOs** — SHA-256 + GPG signature.
 
-## Download & verify
+## Download
 
-Latest ISO: **[Releases](https://github.com/edizsale/shalaos/releases)**.
+**Grab the latest ISO from [Releases](https://github.com/edizsale/shalaos/releases), write it
+to a USB stick, and boot. That's it.**
+
+<details>
+<summary><b>Verifying your download (optional)</b></summary>
+
+Not required — but if you want to be sure the download isn't corrupted, grab the `.sha256`
+file next to the ISO and run one command:
 
 ```bash
-sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256
+sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256   # expect "OK"
+```
+
+**Advanced (GPG signature):** to cryptographically confirm the ISO was published by ShalaOS,
+use the `.sig` file:
+
+```bash
 gpg --import KEYS
 gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso
 ```
+
+</details>
 
 ## Build
 

@@ -80,19 +80,21 @@
     </section>
 
     <section id="indir" class="download">
-      <h2>İndir ve doğrula</h2>
+      <h2>İndir</h2>
       <p>
-        En güncel ISO
+        En güncel ISO'yu
         <a href="https://github.com/edizsale/shalaos/releases/latest">Releases</a>
-        sayfasındadır. İndirdikten sonra bütünlüğü doğrula:
+        sayfasından indir, USB'ye yaz, başlat. Bu kadar.
+        <a href="https://github.com/edizsale/shalaos/blob/main/docs/kurulum.md">Kurulum kılavuzu →</a>
       </p>
-      <pre><code>sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256
-gpg --import KEYS
+      <details class="verify">
+        <summary>İndirmeni doğrulamak istersen (opsiyonel)</summary>
+        <p>Zorunlu değil. Bozulmadan geldiğinden emin olmak için tek komut:</p>
+        <pre><code>sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256</code></pre>
+        <p>İleri düzey — ShalaOS tarafından yayımlandığını GPG ile doğrula:</p>
+        <pre><code>gpg --import KEYS
 gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso</code></pre>
-      <p>
-        Kurulum adımları için
-        <a href="https://github.com/edizsale/shalaos/blob/main/docs/kurulum.md">kurulum kılavuzuna</a> bak.
-      </p>
+      </details>
     </section>
   </main>
 
