@@ -22,12 +22,11 @@
 
 ## Nedir?
 
-ShalaOS, "her yerde ShalaOS görünsün" fikriyle tasarlanmış, kimliği baştan sona işlenmiş bir
+ShalaOS, "sade, şık ve güvenilir bir işletim sistemi" fikriyle tasarlanmış, kimliği baştan sona işlenmiş bir
 Arch Linux dağıtımıdır. Koyu zemin + kırmızı vurgu (kırmızı kartal logosu) etrafında kurulu
-**dardania** Plasma Global Teması ile gelir. GNOME yerine tema özgürlüğü yüksek KDE Plasma
+**dardania** Plasma Global Teması ile gelir. Masaüstü ortamı olarak tema özgürlüğü yüksek KDE Plasma
 tercih edilmiştir.
 
-Debian/XFCE tabanlı öncül çalışma **Abinti**'nin devamıdır.
 
 ## Özellikler
 
