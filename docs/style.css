@@ -153,6 +153,17 @@ pre {
   font-size: 0.9rem;
 }
 
+/* Sistem gereksinimleri */
+.reqs { max-width: var(--max); margin: 0 auto; padding: 3rem 1.25rem; border-top: 1px solid var(--border); }
+.reqs-lead { text-align: center; color: var(--muted); max-width: 720px; margin: 0 auto 1.4rem; }
+.reqs-lead strong { color: var(--text); }
+.reqs-table { max-width: 760px; margin: 0 auto; overflow-x: auto; }
+.reqs table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.reqs th, .reqs td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--border); }
+.reqs thead th { color: var(--red); font-weight: 700; border-bottom-color: var(--red-dim); }
+.reqs tbody td:first-child { color: var(--text); font-weight: 600; }
+.reqs tbody td { color: var(--muted); }
+
 .verify {
   max-width: 720px;
   margin: 1.4rem auto 0;

@@ -6,6 +6,20 @@ ISO'yu üretmek (derlemek) istiyorsan bkz. [BUILD.md](BUILD.md).
 > ⚠️ Kurulum diski **siler**. Önemli verilerini yedekle. Denemek için önce bir sanal
 > makine (VMware/VirtualBox/QEMU) kullanman önerilir.
 
+## Sistem gereksinimleri
+
+ShalaOS hafiftir; eski/düşük güçlü bilgisayarlar da çalıştırabilir.
+
+| Bileşen | En az | Önerilen |
+|---------|-------|----------|
+| İşlemci | 64-bit (x86_64), çift çekirdek | 2+ çekirdek, ~2 GHz |
+| RAM | 2 GB (canlı ortam) | 4 GB |
+| Disk | 20 GB boş (kurulum) | 30 GB+ (SSD) |
+| Ekran kartı | OpenGL destekli (entegre yeter) | — |
+| Önyükleme | UEFI veya BIOS | UEFI |
+
+Kurucu 15 GB'ın altındaki diskleri reddeder. Kurulum internet gerektirmez.
+
 ## 1. ISO'yu indir
 
 En güncel ISO'yu [Releases](https://github.com/edizsale/shalaos/releases) sayfasından indir.

@@ -66,6 +66,22 @@ gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso
 
 </details>
 
+## System requirements
+
+ShalaOS is lightweight — **it runs comfortably on older, low-spec machines too.** KDE Plasma is
+smooth on modest hardware, and installation needs no internet.
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| CPU | 64-bit (x86_64), dual-core | 2+ cores, ~2 GHz |
+| RAM | **2 GB** | 4 GB |
+| Disk | **20 GB** free | 30 GB+ (SSD) |
+| Graphics | OpenGL-capable (integrated GPU is fine) | — |
+| Firmware | UEFI **or** legacy BIOS | UEFI |
+
+> Note: ~2 GB RAM is enough to try the live session. The installer (Calamares) rejects disks
+> under 15 GB, so the target disk should be at least 20 GB.
+
 ## Build
 
 Two ways — automated CI (on tag push) and manual VM build. See **[docs/BUILD.md](docs/BUILD.md)**.

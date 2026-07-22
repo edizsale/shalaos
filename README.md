@@ -65,6 +65,22 @@ gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso
 
 </details>
 
+## Sistem gereksinimleri
+
+ShalaOS hafiftir — **eski ve düşük güçlü bilgisayarlarda da rahat çalışır.** KDE Plasma
+mütevazı donanımda akıcıdır ve kurulum internet gerektirmez.
+
+| Bileşen | En az | Önerilen |
+|---------|-------|----------|
+| İşlemci | 64-bit (x86_64), çift çekirdek | 2+ çekirdek, ~2 GHz |
+| RAM | **2 GB** | 4 GB |
+| Disk | **20 GB** boş alan | 30 GB+ (SSD) |
+| Ekran kartı | OpenGL destekli (entegre GPU yeterli) | — |
+| Önyükleme | UEFI **veya** eski BIOS | UEFI |
+
+> Not: Canlı ortamı denemek için ~2 GB RAM yeterlidir. Kurucu (Calamares) 15 GB'ın altındaki
+> diskleri reddeder, bu yüzden hedef disk en az 20 GB olmalı.
+
 ## Derleme
 
 ISO'yu kendin üretmek istersen iki yol var — otomatik CI (tag'e basınca) ve elle VM
