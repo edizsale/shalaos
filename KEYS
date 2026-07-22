@@ -1,0 +1,20 @@
+ShalaOS Release Signing anahtarı (GPG public key).
+
+ISO'ları ve sağlama dosyalarını bu anahtar imzalar. Doğrulama:
+
+    gpg --import KEYS
+    gpg --verify ShalaOS-*.iso.sig ShalaOS-*.iso
+
+Anahtar sahibi: ShalaOS Release Signing <edizsale810@gmail.com>
+Parmak izi:     980F CB0E EA82 B116 E177  C01C 39C1 82E9 731E 2ABF
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEamDSgxYJKwYBBAHaRw8BAQdAlVtXIg/b/KMSLoUQ+ewjSllmBI2ffdq0u4z9
+wSwaCZG0L1NoYWxhT1MgUmVsZWFzZSBTaWduaW5nIDxlZGl6c2FsZTgxMEBnbWFp
+bC5jb20+iJAEExYKADgWIQSYD8sO6oKxFuF3wBw5wYLpcx4qvwUCamDSgwIbAwUL
+CQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRA5wYLpcx4qvypsAQDfCkal2Wm2MjTh
+pQa3hoizxe4fSJf9dPt3a/cgDo8K/gEAlEY9iOQRaYxcBdG5bAFkPjNmG9R2jrq0
+//f5tZVPEQ4=
+=Qo3m
+-----END PGP PUBLIC KEY BLOCK-----
