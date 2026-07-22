@@ -86,23 +86,44 @@ gpg --armor --export "edizsale810@gmail.com" > KEYS
 git add KEYS && git commit -m "GPG public imza anahtari eklendi" && git push
 ```
 
-### 3.3 Private key'i GitHub secret olarak ekle
+### 3.3 Private key'i GitHub secret olarak ekle (base64)
+
+Private key'i **base64 olarak** sakla — terminalden kopyalarken satır sonlarının bozulmasını
+önler (workflow base64 çözer):
 
 ```bash
-# ASCII-armored private key'i panoya/dosyaya çıkar:
-gpg --armor --export-secret-keys "edizsale810@gmail.com" > /tmp/shalaos-private.asc
+gpg --armor --export-secret-keys "edizsale810@gmail.com" | base64 -w0 ; echo
 ```
 
-GitHub → repo → **Settings → Secrets and variables → Actions → New repository secret**:
+Çıkan **tek satırlık** çıktıyı kopyala → GitHub → repo → **Settings → Secrets and variables →
+Actions → New repository secret**:
 
-- `SHALAOS_GPG_KEY` = `/tmp/shalaos-private.asc` dosyasının **tüm içeriği**
-- `SHALAOS_GPG_PASSPHRASE` = anahtarın parolası (parolasız ürettiysen bu secret'ı ekleme)
-
-Ardından:
-
-```bash
-rm -f /tmp/shalaos-private.asc   # private key'i diskten sil
-```
+- `SHALAOS_GPG_KEY` = yukarıdaki base64 çıktısının tamamı
+- `SHALAOS_GPG_PASSPHRASE` = anahtarın parolası (parolasız ürettiysen bu secret'ı **ekleme**)
 
 Bundan sonraki her release imzalanır ve `.iso.sig` / `.iso.sha256.sig` dosyaları eklenir.
-Kullanıcılar `docs`/`SECURITY.md`'deki adımlarla doğrular.
+
+---
+
+## 4. SourceForge barındırma (ISO 2 GiB'dan büyük)
+
+ISO GitHub Release dosya sınırını (2 GiB) aştığından, tag'lenen sürümlerde CI ISO'yu
+**SourceForge**'a yükler; GitHub Release'e yalnızca `.sha256` + `.sig` + indirme linki konur.
+
+Gerekli **secret**'lar (SSH anahtarı, `docs/BUILD.md` akışıyla aynı base64 mantığı):
+
+```bash
+# CI için ayrı bir SSH anahtarı üret:
+ssh-keygen -t ed25519 -f ~/shalaos-sf -N "" -C "shalaos-ci"
+cat ~/shalaos-sf.pub        # PUBLIC  -> SourceForge > Account > SSH Settings
+base64 -w0 ~/shalaos-sf; echo   # PRIVATE base64 -> GitHub secret
+```
+
+GitHub secret'ları:
+
+- `SOURCEFORGE_USER` = SourceForge kullanıcı adın
+- `SOURCEFORGE_SSH_KEY` = private anahtarın **base64** hâli
+
+Yükleme hedefi: `frs.sourceforge.net:/home/frs/project/shalaos/v<sürüm>/`. İndirme linki:
+`https://sourceforge.net/projects/shalaos/files/v<sürüm>/<ISO>/download`. Kullanıcılar ISO'yu
+SourceForge'dan indirir, sağlama/imzayı GitHub Release'ten alıp doğrular (`SECURITY.md`).

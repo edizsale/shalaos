@@ -22,13 +22,17 @@ Kurucu 15 GB'ın altındaki diskleri reddeder. Kurulum internet gerektirmez.
 
 ## 1. ISO'yu indir
 
-En güncel ISO'yu [Releases](https://github.com/edizsale/shalaos/releases) sayfasından indir.
+En güncel ISO'yu [SourceForge](https://sourceforge.net/projects/shalaos/files/) üzerinden indir.
 İndirmeye başlamak için bu kadarı yeterli — sonraki adıma geçebilirsin.
+
+> ISO boyutu nedeniyle SourceForge'da; sağlama ve imza dosyaları
+> [GitHub Releases](https://github.com/edizsale/shalaos/releases)'tedir.
 
 <details>
 <summary><b>İndirmeni doğrulamak istersen (opsiyonel)</b></summary>
 
-Zorunlu değil. İndirmenin bozulmadığından emin olmak için `.sha256` dosyasını da indir:
+Zorunlu değil. İndirmenin bozulmadığından emin olmak için GitHub Release'ten `.sha256`
+dosyasını da indir:
 
 ```bash
 sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256   # "OK" görmelisin
