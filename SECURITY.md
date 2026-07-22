@@ -34,6 +34,12 @@ gpg --import KEYS
 gpg --verify ShalaOS-*.iso.sig ShalaOS-*.iso
 ```
 
-GPG genel anahtarının parmak izi `KEYS` dosyasında ve yayımlandığında burada listelenir.
-Yalnızca GitHub `edizsale/shalaos` **Releases** sayfasından indirilen ve imzası/sağlaması
-doğrulanan ISO'lar resmî kabul edilmelidir.
+Resmî ShalaOS imza anahtarının parmak izi:
+
+```
+980F CB0E EA82 B116 E177  C01C 39C1 82E9 731E 2ABF
+```
+
+`gpg --verify` çıktısındaki parmak izi bununla aynı olmalı. Yalnızca GitHub
+`edizsale/shalaos` **Releases** sayfasından indirilen ve imzası/sağlaması doğrulanan ISO'lar
+resmî kabul edilmelidir.
