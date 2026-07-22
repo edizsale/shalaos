@@ -1,0 +1,54 @@
+name: SourceForge bağlantı testi
+
+# SourceForge secret'larını (SOURCEFORGE_USER + SOURCEFORGE_SSH_KEY) ISO derlemeden
+# ~30 saniyede test eder. Actions sekmesinden elle çalıştır (Run workflow).
+# Küçük bir test dosyasını frs.sourceforge.net'e yükler ve neyin yanlış olduğunu net söyler.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH anahtarı + SourceForge bağlantısını doğrula
+        env:
+          SF_USER: ${{ secrets.SOURCEFORGE_USER }}
+          SF_KEY: ${{ secrets.SOURCEFORGE_SSH_KEY }}
+        run: |
+          set -uo pipefail
+          [ -n "${SF_USER:-}" ] || { echo "::error::SOURCEFORGE_USER secret'ı boş/eksik."; exit 1; }
+          [ -n "${SF_KEY:-}" ]  || { echo "::error::SOURCEFORGE_SSH_KEY secret'ı boş/eksik."; exit 1; }
+
+          # Sık hata: PUBLIC anahtar yapıştırılmış
+          if printf '%s' "$SF_KEY" | head -n1 | grep -q '^ssh-'; then
+            echo "::error::SOURCEFORGE_SSH_KEY bir PUBLIC anahtar gibi görünüyor ('ssh-...' ile başlıyor)."
+            echo "::error::PRIVATE anahtarı koymalısın — '-----BEGIN OPENSSH PRIVATE KEY-----' ile başlar. Public anahtar SourceForge Keys kutusuna gider."
+            exit 1
+          fi
+
+          mkdir -p ~/.ssh
+          if printf '%s' "$SF_KEY" | grep -q 'PRIVATE KEY'; then
+            echo "→ Ham private key algılandı."
+            printf '%s\n' "$SF_KEY" > ~/.ssh/sf_key
+          else
+            echo "→ base64 varsayılıp çözülüyor."
+            printf '%s' "$SF_KEY" | base64 -d > ~/.ssh/sf_key 2>/dev/null \
+              || { echo "::error::Secret ne ham private key ('-----BEGIN...') ne de geçerli base64. Yanlış içerik yapıştırılmış (public key?)."; exit 1; }
+          fi
+          chmod 600 ~/.ssh/sf_key
+
+          ssh-keygen -y -f ~/.ssh/sf_key >/dev/null \
+            || { echo "::error::Anahtar geçersiz/eksik (tam private key bloğunu koydun mu?)."; exit 1; }
+          echo "✅ Private anahtar geçerli."
+
+          ssh-keyscan -H frs.sourceforge.net >> ~/.ssh/known_hosts 2>/dev/null
+          echo "shalaos SF CI testi $(date -u)" > /tmp/sf-ci-test.txt
+          if rsync -avP -e "ssh -i ~/.ssh/sf_key -o StrictHostKeyChecking=yes" \
+               /tmp/sf-ci-test.txt "$SF_USER@frs.sourceforge.net:/home/frs/project/shalaos/"; then
+            echo "✅✅ SourceForge yükleme ÇALIŞIYOR — artık tag atabilirsin."
+          else
+            echo "::error::rsync başarısız. 'Permission denied (publickey)' ise: public anahtar SourceForge → Account → SSH Settings/Keys kutusunda değil, ya da SOURCEFORGE_USER yanlış (e-posta değil, kullanıcı adı)."
+            exit 1
+          fi
+          rm -f ~/.ssh/sf_key
