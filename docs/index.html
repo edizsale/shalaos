@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShalaOS — Arch tabanlı, KDE Plasma, koyu-kırmızı</title>
+  <meta name="description" content="ShalaOS: Arch Linux tabanlı, KDE Plasma masaüstülü, koyu-kırmızı dardania temalı özel Linux dağıtımı." />
+  <link rel="icon" href="assets/icon-256.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="ShalaOS" />
+      <span>ShalaOS</span>
+    </a>
+    <nav class="links">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="#indir">İndir</a>
+      <a href="https://github.com/edizsale/shalaos/blob/main/docs/kurulum.md">Kurulum</a>
+      <a href="https://github.com/edizsale/shalaos">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="hero-logo" src="assets/logo.png" alt="ShalaOS logosu" />
+      <h1>ShalaOS</h1>
+      <p class="tagline">
+        Arch Linux tabanlı, KDE Plasma masaüstülü, koyu-kırmızı
+        <strong>dardania</strong> temalı özel Linux dağıtımı.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/edizsale/shalaos/releases/latest">ISO indir</a>
+        <a class="btn ghost" href="https://github.com/edizsale/shalaos">Kaynak kodu</a>
+      </div>
+      <p class="sub">x86_64 · UEFI + BIOS · imzalı ve doğrulanabilir</p>
+    </section>
+
+    <section class="showcase">
+      <div class="frame">
+        <img src="assets/wallpaper.png" alt="ShalaOS masaüstü duvar kağıdı" />
+      </div>
+    </section>
+
+    <section id="ozellikler" class="features">
+      <h2>Öne çıkanlar</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="ico">🦅</div>
+          <h3>Baştan sona kimlik</h3>
+          <p>Logo, duvar kağıdı, SDDM, Plymouth açılış, panel başlat düğmesi ve karşılama sayfası — her yerde ShalaOS.</p>
+        </article>
+        <article class="card">
+          <div class="ico">🎨</div>
+          <h3>dardania teması</h3>
+          <p>Breeze Dark tabanlı koyu-kırmızı Global Tema (AccentColor 228,20,30), renk şeması ve pencere dekorasyonu.</p>
+        </article>
+        <article class="card">
+          <div class="ico">🇹🇷</div>
+          <h3>Türkçe hazır</h3>
+          <p>Dil, klavye ve saat dilimi (İstanbul) baştan yapılandırılmış.</p>
+        </article>
+        <article class="card">
+          <div class="ico">💿</div>
+          <h3>Canlı + kurulum</h3>
+          <p>Denemek için canlı ortam; Calamares ile diske kurulum. İnternet gerektirmez.</p>
+        </article>
+        <article class="card">
+          <div class="ico">🔁</div>
+          <h3>Arch rolling</h3>
+          <p>Kurulumdan sonra <code>pacman -Syu</code> ile sürekli güncel kalır.</p>
+        </article>
+        <article class="card">
+          <div class="ico">🔐</div>
+          <h3>İmzalı ISO'lar</h3>
+          <p>Her sürüm SHA-256 sağlaması ve GPG imzasıyla doğrulanabilir.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="indir" class="download">
+      <h2>İndir ve doğrula</h2>
+      <p>
+        En güncel ISO
+        <a href="https://github.com/edizsale/shalaos/releases/latest">Releases</a>
+        sayfasındadır. İndirdikten sonra bütünlüğü doğrula:
+      </p>
+      <pre><code>sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256
+gpg --import KEYS
+gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso</code></pre>
+      <p>
+        Kurulum adımları için
+        <a href="https://github.com/edizsale/shalaos/blob/main/docs/kurulum.md">kurulum kılavuzuna</a> bak.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Kaynak kod <a href="https://github.com/edizsale/shalaos/blob/main/LICENSE">GPL-3.0</a>.
+      İsim ve logo korumalıdır —
+      <a href="https://github.com/edizsale/shalaos/blob/main/TRADEMARK.md">marka politikası</a>.
+    </p>
+    <p class="muted">© 2026 ShalaOS · Arch Linux tabanlı · KDE Plasma</p>
+  </footer>
+</body>
+</html>

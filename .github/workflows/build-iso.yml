@@ -1,0 +1,137 @@
+name: ISO derle ve yayınla
+
+# Tag (vX.Y.Z) atılınca ISO'yu üretir, SHA-256 + GPG imzası ekler ve GitHub
+# Release oluşturur. workflow_dispatch ile etikete gerek olmadan elle de
+# çalıştırılabilir (çıktı artefakt olarak yüklenir, release oluşturulmaz).
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # commit tarihi (SOURCE_DATE_EPOCH) için
+
+      - name: Disk alanı aç
+        run: |
+          # mkarchiso work dizini için runner'da yer aç.
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+                      /opt/hostedtoolcache/CodeQL || true
+          df -h /
+
+      - name: Sürüm ve tarih bilgisini belirle
+        id: meta
+        run: |
+          set -euo pipefail
+          if [ "${GITHUB_REF_TYPE:-}" = "tag" ]; then
+            VER="${GITHUB_REF_NAME#v}"
+          else
+            # elle çalıştırma: VERSION dosyasından oku
+            # shellcheck disable=SC1091
+            . ./VERSION
+            VER="${SHALAOS_VERSION:-0.0.0}-dev"
+          fi
+          # kod adı VERSION dosyasından
+          CODENAME="$(. ./VERSION; echo "${SHALAOS_CODENAME:-Dardania}")"
+          EPOCH="$(git log -1 --format=%ct)"
+          echo "version=$VER"        >> "$GITHUB_OUTPUT"
+          echo "codename=$CODENAME"  >> "$GITHUB_OUTPUT"
+          echo "epoch=$EPOCH"        >> "$GITHUB_OUTPUT"
+          echo "iso=ShalaOS-${VER}-${CODENAME}-x86_64.iso" >> "$GITHUB_OUTPUT"
+          echo "Sürüm: $VER  Kod adı: $CODENAME  Epoch: $EPOCH"
+
+      - name: Derleyici imajını hazırla
+        run: docker build -t shalaos-builder .
+
+      - name: mkarchiso ile ISO üret
+        env:
+          SHALAOS_VERSION: ${{ steps.meta.outputs.version }}
+          SOURCE_DATE_EPOCH: ${{ steps.meta.outputs.epoch }}
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          docker run --rm --privileged \
+            -e SHALAOS_VERSION -e SOURCE_DATE_EPOCH \
+            -v "$PWD/profile:/build/profile:ro" \
+            -v "$PWD/out:/build/out:rw" \
+            -w /build shalaos-builder \
+            bash -c 'mkarchiso -v -w /tmp/archiso-work -o /build/out /build/profile'
+
+      - name: ISO'yu markalı isimle yeniden adlandır ve sağlama üret
+        id: pack
+        run: |
+          set -euo pipefail
+          src="$(find out -maxdepth 1 -name '*.iso' | head -n1)"
+          [ -n "$src" ] || { echo "ISO bulunamadı!"; ls -la out; exit 1; }
+          iso="out/${{ steps.meta.outputs.iso }}"
+          mv "$src" "$iso"
+          ( cd out && sha256sum "$(basename "$iso")" > "$(basename "$iso").sha256" )
+          echo "iso_path=$iso" >> "$GITHUB_OUTPUT"
+          ls -lh out
+
+      - name: GPG imzası (secret varsa)
+        id: sign
+        env:
+          GPG_KEY: ${{ secrets.SHALAOS_GPG_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.SHALAOS_GPG_PASSPHRASE }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GPG_KEY:-}" ]; then
+            echo "::warning::SHALAOS_GPG_KEY tanımlı değil — ISO imzalanmadan yayımlanacak."
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "$GPG_KEY" | gpg --batch --import
+          iso="${{ steps.pack.outputs.iso_path }}"
+          for f in "$iso" "$iso.sha256"; do
+            gpg --batch --yes --pinentry-mode loopback \
+                --passphrase "${GPG_PASSPHRASE:-}" \
+                --detach-sign -o "$f.sig" "$f"
+          done
+          echo "signed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Artefaktları yükle (her çalıştırmada)
+        uses: actions/upload-artifact@v4
+        with:
+          name: shalaos-iso
+          path: |
+            out/*.iso
+            out/*.sha256
+            out/*.sig
+          retention-days: 14
+
+      - name: GitHub Release oluştur (yalnızca tag'te)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ShalaOS ${{ steps.meta.outputs.version }} "${{ steps.meta.outputs.codename }}"
+          draft: false
+          files: |
+            out/*.iso
+            out/*.sha256
+            out/*.sig
+          body: |
+            ShalaOS ${{ steps.meta.outputs.version }} "${{ steps.meta.outputs.codename }}"
+
+            Arch Linux tabanlı, KDE Plasma masaüstülü, koyu-kırmızı "dardania" temalı dağıtım.
+
+            **Doğrulama**
+            ```bash
+            sha256sum -c ${{ steps.meta.outputs.iso }}.sha256
+            gpg --import KEYS
+            gpg --verify ${{ steps.meta.outputs.iso }}.sig ${{ steps.meta.outputs.iso }}
+            ```
+
+            İmza durumu: `${{ steps.sign.outputs.signed }}` (false ise SHALAOS_GPG_KEY secret'ı eklenmemiş).
+
+            Kurulum kılavuzu ve ayrıntılar için depo dokümantasyonuna bakın.

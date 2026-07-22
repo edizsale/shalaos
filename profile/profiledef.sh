@@ -5,7 +5,9 @@ iso_name="shalaos"
 iso_label="SHALAOS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="ShalaOS <https://github.com/edizsale/shalaos>"
 iso_application="ShalaOS Canli Ortami"
-iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
+# Sürüm: CI/kullanıcı SHALAOS_VERSION verirse onu kullan (ör. 1.0.0);
+# verilmezse eski davranış — tarih bazlı (VM'de elle derleme birebir korunur).
+iso_version="${SHALAOS_VERSION:-$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)}"
 install_dir="arch"
 buildmodes=('iso')
 bootmodes=('bios.syslinux'

@@ -64,14 +64,23 @@ düşük); kullanıcı "her yerde ShalaOS görünsün" istiyor.
 
 ## İş akışı
 
-Her değişiklikten sonra sırayla:
-1. `git add -A && git commit && git push` (repo: private `edizsale/shalaos`)
-2. `cd /home/edizshala && rm -f shalaos-build.tar.gz && tar czf shalaos-build.tar.gz shalaos-build`
-   (DİKKAT: tar'ı home dizininden çalıştır, shalaos-build içinden değil)
-3. `gh release upload v1 shalaos-build.tar.gz --repo edizsale/shalaos --clobber`
+**GÜNCEL (resmîleşme sonrası — CI tabanlı):**
+1. Kaynağı düzenle → `git add -A && git commit && git push` (repo: `edizsale/shalaos`).
+2. **Test derlemesi:** GitHub Actions → "ISO derle ve yayınla" → *Run workflow*
+   (`workflow_dispatch`); ISO artefakt olarak iner. Veya VM'de `./build.sh`.
+3. **Resmî sürüm:** `VERSION` + `CHANGELOG.md` güncelle → `git tag -a vX.Y.Z -m '...'`
+   → `git push origin vX.Y.Z`. CI ISO'yu üretir, SHA-256 + GPG imzalar, Release'i oluşturur.
+   Ayrıntı: `docs/BUILD.md`.
+
+> **ESKİ akış EMEKLİ:** `tar czf shalaos-build.tar.gz` + `gh release upload v1 ... --clobber`
+> artık kullanılmıyor. Kullanıcı VM'de eski tarball indirmeye gerek duymaz; `git pull` +
+> CI/`build.sh` yeterli.
 
 VM'de root sahipli dosya kalıntıları olabilir (Docker --privileged yüzünden);
 kullanıcıya silme komutu verirken `sudo rm -rf` öner.
+
+Sürümleme: **isimli major + SemVer** (ör. ShalaOS 1.0 "Dardania"). `profiledef.sh` sürümü
+`SHALAOS_VERSION` env'inden alır (yoksa eski tarih bazlı davranış birebir korunur).
 
 ## Yol haritası (plan: ~/.claude/plans/pure-weaving-scone.md)
 
@@ -80,6 +89,27 @@ kullanıcıya silme komutu verirken `sudo rm -rf` öner.
 3. ~~Aşama 3: Calamares (EndeavourOS binary deposu)~~ — VM kurulum testi GEÇTİ (18 Tem 2026): kurulum uçtan uca, pacman -Syu dahil sorunsuz
 4. Aşama 4 v1 TAMAM (18 Tem 2026): dardania ayrı repoda (private `edizsale/dardania`); DardaniaDark renk şeması + LNF + splash. Kaynak orası — ISO kopyasını elle düzenleme, `./sync-dardania.sh` çalıştır. v2 fikirleri: SDDM QML teması, ikon seti, dekorasyon
 5. Aşama 5: VMware test + gerçek donanım (Acer'da Abinti var, ÜZERİNE YAZILMAZ)
+
+### Resmîleşme yol haritası (plan: ~/.claude/plans/t-m-sistemi-incele-bu-majestic-brook.md)
+
+Projeyi halka açık, resmî bir dağıtım standardına taşır. **profile/ işlevsel olarak
+DEĞİŞMEZ** (yalnızca profiledef.sh'e geriye-uyumlu sürüm kancası eklendi).
+
+- ~~**R1** Depo hijyeni & yasal: `gitcode.md` silindi; `LICENSE` (GPL-3.0), `TRADEMARK.md`
+  (isim/kırmızı-kartal logo korumalı), `NOTICE.md`, `CONTRIBUTING`/`CODE_OF_CONDUCT`/
+  `SECURITY`, `CHANGELOG`, `.editorconfig`/`.gitattributes`, `.github` şablonları.~~ TAMAM
+- ~~**R2** Sürümleme: `VERSION` (1.0.0 "Dardania"), `profiledef.sh` `SHALAOS_VERSION`
+  env-fallback, release-notes şablonu.~~ TAMAM
+- ~~**R3** CI/CD: `.github/workflows/build-iso.yml` (tag → mkarchiso → SHA-256 + GPG imza →
+  Release), `lint.yml` (shellcheck), `docs/BUILD.md`.~~ TAMAM
+- ~~**R4** Tanıtım: zengin `README.md`(+`.en`), `docs/` GitHub Pages sitesi (koyu-kırmızı),
+  `docs/kurulum.md`, `docs/TEST-CHECKLIST.md`, `pages.yml`.~~ TAMAM
+- **R5** Public geçiş & ilk resmî sürüm — **KULLANICI eylemi bekliyor:**
+  1. GPG anahtarı üret + `SHALAOS_GPG_KEY`/`SHALAOS_GPG_PASSPHRASE` secret ekle, public key
+     `KEYS`'e commit (`docs/BUILD.md` §3).
+  2. Depoyu **public** yap; Settings → Pages → Source: "GitHub Actions".
+  3. `v1.0.0` tag'i at → ilk imzalı Release. (dardania deposu private kalabilir; ISO
+     self-contained.)
 
 ## Kullanıcı hakkında
 

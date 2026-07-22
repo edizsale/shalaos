@@ -1,0 +1,66 @@
+<div align="center">
+
+<img src="docs/assets/logo.png" alt="ShalaOS" width="220" />
+
+# ShalaOS
+
+**A custom Linux distribution: Arch-based, KDE Plasma desktop, dark-and-red _"dardania"_ theme.**
+
+[![License: GPL-3.0](https://img.shields.io/github/license/edizsale/shalaos)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/edizsale/shalaos?display_name=release)](https://github.com/edizsale/shalaos/releases)
+[![Build ISO](https://github.com/edizsale/shalaos/actions/workflows/build-iso.yml/badge.svg)](https://github.com/edizsale/shalaos/actions/workflows/build-iso.yml)
+
+[Download](https://github.com/edizsale/shalaos/releases) ·
+[Install (TR)](docs/kurulum.md) ·
+[Build](docs/BUILD.md) ·
+[Contributing](CONTRIBUTING.md) ·
+[Türkçe](README.md)
+
+</div>
+
+---
+
+## What is it?
+
+ShalaOS is an Arch Linux distribution with a fully themed identity, built around the idea of
+"ShalaOS everywhere". It ships the **dardania** Plasma Global Theme — a dark base with red
+accent (AccentColor 228,20,30) and a red eagle logo. KDE Plasma was chosen over GNOME for its
+theming freedom. It is the continuation of **Abinti**, an earlier Debian/XFCE alpha.
+
+The primary language of the distribution and its documentation is **Turkish**.
+
+## Features
+
+- 🦅 **End-to-end ShalaOS branding** — logo, wallpaper, SDDM, Plymouth boot splash, panel
+  launcher, welcome page.
+- 🎨 **dardania theme** — Breeze Dark–based dark/red Global Theme, color scheme and window
+  decoration.
+- 🇹🇷 **Turkish localization** — language, keyboard and timezone (Istanbul) preconfigured.
+- 💿 **Live + install** — installable to disk via Calamares; no internet required.
+- 🖥️ **KDE Plasma** — Dolphin, Konsole, Kate, Spectacle, Chromium and more.
+- 🔁 **Arch rolling** — stays current with `pacman -Syu` after install.
+- 🔐 **Signed, verifiable ISOs** — SHA-256 + GPG signature.
+
+## Download & verify
+
+Latest ISO: **[Releases](https://github.com/edizsale/shalaos/releases)**.
+
+```bash
+sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256
+gpg --import KEYS
+gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso
+```
+
+## Build
+
+Two ways — automated CI (on tag push) and manual VM build. See **[docs/BUILD.md](docs/BUILD.md)**.
+
+```bash
+./build.sh   # needs Docker; ISO lands in out/
+```
+
+## License & trademark
+
+Source code is under **[GPL-3.0](LICENSE)**. The **"ShalaOS" name, red eagle logo and visual
+identity** are protected — see [TRADEMARK.md](TRADEMARK.md). Third-party attributions:
+[NOTICE.md](NOTICE.md).

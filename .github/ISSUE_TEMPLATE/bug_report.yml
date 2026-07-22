@@ -1,0 +1,54 @@
+name: Hata bildirimi
+description: ShalaOS'ta bir hata veya beklenmeyen davranış bildir
+title: "[Hata]: "
+labels: ["hata"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Teşekkürler! Lütfen aşağıdaki alanları olabildiğince eksiksiz doldur.
+        Güvenlik açıkları için bu formu KULLANMA — `SECURITY.md`'deki yolu izle.
+  - type: input
+    id: version
+    attributes:
+      label: ShalaOS sürümü
+      description: ISO adı / sürüm (ör. ShalaOS 1.0 "Dardania", 1.0.0)
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Ortam
+      options:
+        - Canlı ortam (kurulum yapılmadı)
+        - Kurulu sistem
+        - VMware / VirtualBox
+        - Gerçek donanım
+        - Kurulum (Calamares) sırasında
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Ne oldu?
+      description: Beklenen ve gerçekleşen davranışı anlat.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Yeniden üretme adımları
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Günlük / ekran görüntüsü
+      description: İlgili log çıktısı veya ekran görüntüsü (varsa).
+    validations:
+      required: false
