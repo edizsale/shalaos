@@ -117,8 +117,16 @@ jobs:
             exit 1
           fi
           mkdir -p ~/.ssh
-          echo "$SF_KEY_B64" | base64 -d > ~/.ssh/sf_key
+          # SSH özel anahtarı esnek: base64 kodluysa çöz, ham anahtarsa doğrudan yaz.
+          if printf '%s' "$SF_KEY_B64" | grep -q 'PRIVATE KEY'; then
+            printf '%s\n' "$SF_KEY_B64" > ~/.ssh/sf_key
+          else
+            printf '%s' "$SF_KEY_B64" | base64 -d > ~/.ssh/sf_key
+          fi
           chmod 600 ~/.ssh/sf_key
+          # anahtar geçerli mi? erken, net hata ver.
+          ssh-keygen -y -f ~/.ssh/sf_key >/dev/null \
+            || { echo "::error::SOURCEFORGE_SSH_KEY geçersiz (ham anahtar ya da base64 olmalı)."; exit 1; }
           ssh-keyscan -H frs.sourceforge.net >> ~/.ssh/known_hosts 2>/dev/null
           DEST="$SF_USER@frs.sourceforge.net:/home/frs/project/shalaos/v$VER/"
           # ISO + sağlama + (varsa) imzalar
