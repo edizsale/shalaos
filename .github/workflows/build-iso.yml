@@ -121,7 +121,8 @@ jobs:
           if printf '%s' "$SF_KEY_B64" | grep -q 'PRIVATE KEY'; then
             printf '%s\n' "$SF_KEY_B64" > ~/.ssh/sf_key
           else
-            printf '%s' "$SF_KEY_B64" | base64 -d > ~/.ssh/sf_key
+            # base64: kopyada sıkışmış olabilecek boşlukları at, sonra çöz.
+            printf '%s' "$SF_KEY_B64" | tr -d '[:space:]' | base64 -d > ~/.ssh/sf_key
           fi
           chmod 600 ~/.ssh/sf_key
           # anahtar geçerli mi? erken, net hata ver.
