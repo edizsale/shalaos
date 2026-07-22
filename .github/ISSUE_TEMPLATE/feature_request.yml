@@ -1,0 +1,26 @@
+name: Özellik / öneri
+description: ShalaOS için yeni bir fikir veya iyileştirme öner
+title: "[Öneri]: "
+labels: ["öneri"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivasyon
+      description: Bu öneri hangi ihtiyacı veya sorunu çözüyor?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Önerilen çözüm
+      description: Nasıl çalışmasını istersin?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatifler
+      description: Düşündüğün başka yaklaşımlar (varsa).
+    validations:
+      required: false

@@ -1,0 +1,20 @@
+# Satır sonlarını normalize et: metin dosyaları her yerde LF
+* text=auto eol=lf
+
+*.sh    text eol=lf
+*.conf  text eol=lf
+*.cfg   text eol=lf
+*.js    text eol=lf
+*.qml   text eol=lf
+*.json  text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.md    text eol=lf
+*.desc  text eol=lf
+*.desktop text eol=lf
+
+# İkili dosyalar — dokunma
+*.png   binary
+*.iso   binary
+*.tar.gz binary
+*.svg   text eol=lf

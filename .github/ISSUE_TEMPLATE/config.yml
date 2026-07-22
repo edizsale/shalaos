@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Güvenlik açığı bildirimi
+    url: https://github.com/edizsale/shalaos/security/policy
+    about: Güvenlik açıklarını herkese açık issue olarak DEĞİL, SECURITY.md'deki yolla bildir.
