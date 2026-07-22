@@ -42,21 +42,44 @@ tercih edilmiştir.
 
 ## İndirme ve doğrulama
 
-En güncel ISO: **[Releases](https://github.com/edizsale/shalaos/releases)**.
+**En güncel ISO'yu [Releases](https://github.com/edizsale/shalaos/releases) sayfasından
+indir, USB'ye yaz, başlat. Bu kadar.** Kurulum adımları: **[docs/kurulum.md](docs/kurulum.md)**.
 
-| Dosya | Açıklama |
-|-------|----------|
-| `ShalaOS-<sürüm>-Dardania-x86_64.iso` | Canlı + kurulum ISO'su (x86_64, UEFI + BIOS) |
-| `…​.iso.sha256` | SHA-256 sağlaması |
-| `…​.iso.sig` | GPG detached imza |
+<details>
+<summary><b>İndirmeni doğrulamak istersen (opsiyonel)</b></summary>
+
+Zorunlu değil — ama indirmenin bozulmadan geldiğinden emin olmak istersen, ISO'nun
+yanındaki `.sha256` dosyasını da indir ve tek komut çalıştır:
 
 ```bash
-sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256
+sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256   # "OK" görmelisin
+```
+
+**İleri düzey (GPG imza):** ISO'nun gerçekten ShalaOS tarafından yayımlandığını kriptografik
+olarak doğrulamak istersen `.sig` dosyasıyla:
+
+```bash
 gpg --import KEYS
 gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso
 ```
 
-Kurulum adımları için: **[docs/kurulum.md](docs/kurulum.md)**.
+</details>
+
+## Sistem gereksinimleri
+
+ShalaOS hafiftir — **eski ve düşük güçlü bilgisayarlarda da rahat çalışır.** KDE Plasma
+mütevazı donanımda akıcıdır ve kurulum internet gerektirmez.
+
+| Bileşen | En az | Önerilen |
+|---------|-------|----------|
+| İşlemci | 64-bit (x86_64), çift çekirdek | 2+ çekirdek, ~2 GHz |
+| RAM | **2 GB** | 4 GB |
+| Disk | **20 GB** boş alan | 30 GB+ (SSD) |
+| Ekran kartı | OpenGL destekli (entegre GPU yeterli) | — |
+| Önyükleme | UEFI **veya** eski BIOS | UEFI |
+
+> Not: Canlı ortamı denemek için ~2 GB RAM yeterlidir. Kurucu (Calamares) 15 GB'ın altındaki
+> diskleri reddeder, bu yüzden hedef disk en az 20 GB olmalı.
 
 ## Derleme
 

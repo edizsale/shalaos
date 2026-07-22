@@ -6,21 +6,45 @@ ISO'yu üretmek (derlemek) istiyorsan bkz. [BUILD.md](BUILD.md).
 > ⚠️ Kurulum diski **siler**. Önemli verilerini yedekle. Denemek için önce bir sanal
 > makine (VMware/VirtualBox/QEMU) kullanman önerilir.
 
-## 1. ISO'yu indir ve doğrula
+## Sistem gereksinimleri
+
+ShalaOS hafiftir; eski/düşük güçlü bilgisayarlar da çalıştırabilir.
+
+| Bileşen | En az | Önerilen |
+|---------|-------|----------|
+| İşlemci | 64-bit (x86_64), çift çekirdek | 2+ çekirdek, ~2 GHz |
+| RAM | 2 GB (canlı ortam) | 4 GB |
+| Disk | 20 GB boş (kurulum) | 30 GB+ (SSD) |
+| Ekran kartı | OpenGL destekli (entegre yeter) | — |
+| Önyükleme | UEFI veya BIOS | UEFI |
+
+Kurucu 15 GB'ın altındaki diskleri reddeder. Kurulum internet gerektirmez.
+
+## 1. ISO'yu indir
 
 En güncel ISO'yu [Releases](https://github.com/edizsale/shalaos/releases) sayfasından indir.
-Yanındaki `.sha256` ve (varsa) `.sig` dosyalarını da indir, sonra bütünlüğü doğrula:
+İndirmeye başlamak için bu kadarı yeterli — sonraki adıma geçebilirsin.
+
+<details>
+<summary><b>İndirmeni doğrulamak istersen (opsiyonel)</b></summary>
+
+Zorunlu değil. İndirmenin bozulmadığından emin olmak için `.sha256` dosyasını da indir:
 
 ```bash
-# SHA-256 sağlaması
-sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256
+sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256   # "OK" görmelisin
+```
 
-# GPG imzası (public key depo kökündeki KEYS dosyasında)
+İleri düzey — ISO'nun gerçekten ShalaOS tarafından yayımlandığını GPG ile doğrula
+(public key depo kökündeki `KEYS` dosyasında):
+
+```bash
 gpg --import KEYS
 gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso
 ```
 
-İkisi de `OK` / `Good signature` demeli.
+`Good signature` görmelisin.
+
+</details>
 
 ## 2. Önyüklenebilir USB hazırla
 

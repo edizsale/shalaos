@@ -41,15 +41,46 @@ The primary language of the distribution and its documentation is **Turkish**.
 - 🔁 **Arch rolling** — stays current with `pacman -Syu` after install.
 - 🔐 **Signed, verifiable ISOs** — SHA-256 + GPG signature.
 
-## Download & verify
+## Download
 
-Latest ISO: **[Releases](https://github.com/edizsale/shalaos/releases)**.
+**Grab the latest ISO from [Releases](https://github.com/edizsale/shalaos/releases), write it
+to a USB stick, and boot. That's it.**
+
+<details>
+<summary><b>Verifying your download (optional)</b></summary>
+
+Not required — but if you want to be sure the download isn't corrupted, grab the `.sha256`
+file next to the ISO and run one command:
 
 ```bash
-sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256
+sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256   # expect "OK"
+```
+
+**Advanced (GPG signature):** to cryptographically confirm the ISO was published by ShalaOS,
+use the `.sig` file:
+
+```bash
 gpg --import KEYS
 gpg --verify ShalaOS-*-Dardania-x86_64.iso.sig ShalaOS-*-Dardania-x86_64.iso
 ```
+
+</details>
+
+## System requirements
+
+ShalaOS is lightweight — **it runs comfortably on older, low-spec machines too.** KDE Plasma is
+smooth on modest hardware, and installation needs no internet.
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| CPU | 64-bit (x86_64), dual-core | 2+ cores, ~2 GHz |
+| RAM | **2 GB** | 4 GB |
+| Disk | **20 GB** free | 30 GB+ (SSD) |
+| Graphics | OpenGL-capable (integrated GPU is fine) | — |
+| Firmware | UEFI **or** legacy BIOS | UEFI |
+
+> Note: ~2 GB RAM is enough to try the live session. The installer (Calamares) rejects disks
+> under 15 GB, so the target disk should be at least 20 GB.
 
 ## Build
 

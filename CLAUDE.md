@@ -104,12 +104,37 @@ DEĞİŞMEZ** (yalnızca profiledef.sh'e geriye-uyumlu sürüm kancası eklendi)
   Release), `lint.yml` (shellcheck), `docs/BUILD.md`.~~ TAMAM
 - ~~**R4** Tanıtım: zengin `README.md`(+`.en`), `docs/` GitHub Pages sitesi (koyu-kırmızı),
   `docs/kurulum.md`, `docs/TEST-CHECKLIST.md`, `pages.yml`.~~ TAMAM
-- **R5** Public geçiş & ilk resmî sürüm — **KULLANICI eylemi bekliyor:**
-  1. GPG anahtarı üret + `SHALAOS_GPG_KEY`/`SHALAOS_GPG_PASSPHRASE` secret ekle, public key
-     `KEYS`'e commit (`docs/BUILD.md` §3).
-  2. Depoyu **public** yap; Settings → Pages → Source: "GitHub Actions".
-  3. `v1.0.0` tag'i at → ilk imzalı Release. (dardania deposu private kalabilir; ISO
-     self-contained.)
+- **R5** Public geçiş & ilk resmî sürüm — **kısmen TAMAM:**
+  1. ~~Depo **public** yapıldı; Pages "GitHub Actions" kaynağıyla aktif — site canlı:
+     https://edizsale.github.io/shalaos/~~ (22 Tem 2026)
+  2. ~~CI kanıtlandı: `build-iso` `workflow_dispatch` ile imzasız ISO üretti; `lint` yeşil.~~
+  3. **BEKLİYOR (kullanıcı):** GPG anahtarı üret + `SHALAOS_GPG_KEY`/`SHALAOS_GPG_PASSPHRASE`
+     secret ekle, public key `KEYS`'e commit (`docs/BUILD.md` §3).
+  4. **BEKLİYOR:** `v1.0.0` tag'i at → ilk imzalı Release. (dardania deposu private kalabilir;
+     ISO self-contained.)
+
+### v1.0.x sonrası fikirler (henüz UYGULANMADI — plan)
+
+- **R6 — ShalaOS paket deposu (v1.0.1 SONRASI hedef, kullanıcı isteği 22 Tem 2026).**
+  Amaç: ShalaOS'a özgü güncellemeleri (tema/branding/varsayılanlar) kullanıcıya ISO indirtmeden
+  ulaştırmak. İki katman: (1) Arch paketleri zaten `pacman -Syu` ile gelir; (2) airootfs'teki
+  ShalaOS'a özgü dosyalar hiçbir pakete ait olmadığı için güncellenemiyor — bunları **PKGBUILD
+  paketlerine** taşı: `shalaos-branding` (os-release, logo, wallpaper, plymouth, welcome),
+  `shalaos-dardania` (tema; kaynak dardania reposu), `shalaos-settings` (kdeglobals, panel),
+  meta `shalaos-desktop`. **İmzalı `[shalaos]` pacman deposu** (repo db + `.pkg.tar.zst`;
+  barındırma GitHub Releases/Pages veya sunucu), CI ile build+imza+yayın. `/etc/pacman.conf`'a
+  `[shalaos]` eklenir (ISO'da hazır). Sonuç: paketi güncelle+tag'le → herkes `pacman -Syu` ile
+  otomatik alır. Model: EndeavourOS/Manjaro (Fedora point-release DEĞİL; Arch-rolling).
+
+- **R7 — Kullanıcı-dostu güvenlik (kullanıcı ilkesi 22 Tem 2026: "güvenliği artır ama son
+  kullanıcıya komplike gelmesin; uçak filosu check-list'i gibi olmasın").**
+  - ~~İndirme doğrulaması **katmanlı/opsiyonel** yapıldı: varsayılan yol "indir→USB→başlat";
+    `sha256` tek komut opsiyonel; GPG "ileri düzey" olarak `<details>` içinde (README, README.en,
+    docs/index.html, docs/kurulum.md).~~ TAMAM (22 Tem 2026)
+  - Plan: güvenlik çoğunlukla **arka planda/otomatik** olsun — imzalı `[shalaos]` deposu (R6)
+    pacman'de sessizce doğrulanır; makul varsayılanlar (ör. `firewalld` kurulu+aktif,
+    `fwupd` firmware güncellemeleri); ileri düzey: Secure Boot desteği. Kullanıcıya elle
+    kripto ödevi verme.
 
 ## Kullanıcı hakkında
 
