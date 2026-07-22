@@ -42,14 +42,18 @@ tercih edilmiştir.
 
 ## İndirme ve doğrulama
 
-**En güncel ISO'yu [Releases](https://github.com/edizsale/shalaos/releases) sayfasından
-indir, USB'ye yaz, başlat. Bu kadar.** Kurulum adımları: **[docs/kurulum.md](docs/kurulum.md)**.
+**En güncel ISO'yu [SourceForge](https://sourceforge.net/projects/shalaos/files/)
+üzerinden indir, USB'ye yaz, başlat. Bu kadar.** Kurulum adımları: **[docs/kurulum.md](docs/kurulum.md)**.
+
+> ISO, boyutu nedeniyle SourceForge'da barındırılır; sağlama (`.sha256`) ve GPG imza (`.sig`)
+> dosyaları [GitHub Releases](https://github.com/edizsale/shalaos/releases)'tedir.
 
 <details>
 <summary><b>İndirmeni doğrulamak istersen (opsiyonel)</b></summary>
 
-Zorunlu değil — ama indirmenin bozulmadan geldiğinden emin olmak istersen, ISO'nun
-yanındaki `.sha256` dosyasını da indir ve tek komut çalıştır:
+Zorunlu değil — ama indirmenin bozulmadan geldiğinden emin olmak istersen,
+[GitHub Release](https://github.com/edizsale/shalaos/releases)'ten `.sha256` dosyasını da
+indir ve tek komut çalıştır:
 
 ```bash
 sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256   # "OK" görmelisin

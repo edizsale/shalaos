@@ -43,14 +43,17 @@ The primary language of the distribution and its documentation is **Turkish**.
 
 ## Download
 
-**Grab the latest ISO from [Releases](https://github.com/edizsale/shalaos/releases), write it
-to a USB stick, and boot. That's it.**
+**Grab the latest ISO from [SourceForge](https://sourceforge.net/projects/shalaos/files/),
+write it to a USB stick, and boot. That's it.**
+
+> The ISO is hosted on SourceForge due to its size; the checksum (`.sha256`) and GPG signature
+> (`.sig`) live on [GitHub Releases](https://github.com/edizsale/shalaos/releases).
 
 <details>
 <summary><b>Verifying your download (optional)</b></summary>
 
 Not required — but if you want to be sure the download isn't corrupted, grab the `.sha256`
-file next to the ISO and run one command:
+file from the [GitHub Release](https://github.com/edizsale/shalaos/releases) and run one command:
 
 ```bash
 sha256sum -c ShalaOS-*-Dardania-x86_64.iso.sha256   # expect "OK"
