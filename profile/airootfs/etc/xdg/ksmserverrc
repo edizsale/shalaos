@@ -1,0 +1,12 @@
+# Plasma oturum yönetimi — sistem geneli varsayılan.
+#
+# Plasma varsayılanı "restorePreviousLogout" olduğu için, kapatma anında açık olan
+# uygulamalar (ör. hoş geldin sayfasını gösteren Chromium penceresi ve kullanıcının
+# açtığı Konsole) bir sonraki girişte kendiliğinden geri geliyordu. Son kullanıcı
+# bunu "kendiliğinden açılan programlar" hatası olarak görüyor.
+#
+# emptySession = her oturum temiz başlar. Kullanıcı isterse Sistem Ayarları →
+# Başlangıç ve Kapanış → Masaüstü Oturumu'ndan kendi tercihine çevirebilir
+# (bu dosya yalnızca varsayılanı belirler, ~/.config/ksmserverrc onu ezer).
+[General]
+loginMode=emptySession

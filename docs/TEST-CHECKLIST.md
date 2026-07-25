@@ -34,6 +34,9 @@ Mevcut Debian VM'ine dokunma; kurulum testi için **ayrı** bir VM aç
 - [ ] Açılışta **Plymouth**: dönen çember + ShalaOS logosu (UEFI'de üretici logosu üstte;
       kaydırmalı metin GÖRÜNMEMELİ).
 - [ ] İlk girişte **"ShalaOS'e Hoş Geldiniz"** sayfası açılıyor; kapanınca bir daha gelmiyor.
+- [ ] **Oturum temiz başlıyor (regresyon — v1.0.0'da hata vardı):** birkaç pencere (Konsole,
+      Chromium) açıkken kapat/yeniden başlat → ikinci girişte **hiçbiri kendiliğinden
+      açılmamalı**. (`/etc/xdg/ksmserverrc` → `loginMode=emptySession`)
 - [ ] Chromium menüde var ve açılıyor (varsayılan ve tek tarayıcı).
 - [ ] `cat /etc/os-release` → ShalaOS; menüde "ShalaOS'u Kur" artık YOK.
 - [ ] `grep -c endeavouros /etc/pacman.conf` → `0` (EOS deposu silinmiş).
