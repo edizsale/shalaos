@@ -5,6 +5,24 @@ proje [Anlamsal Sürümleme](https://semver.org/lang/tr/) (SemVer) kullanır.
 
 ## [Yayımlanmadı]
 
+## [1.0.1] "Dardania" - 2026-07-27
+
+Bakım sürümü: kurulan sistemde oturum davranışı düzeltmesi. Kurulum, tema ve paket
+seti 1.0.0 ile aynıdır — mevcut kullanıcıların yeniden kurmasına gerek yoktur
+(düzeltme Sistem Ayarları'ndan da yapılabilir, bkz. aşağısı).
+
+### Düzeltildi
+- **Kurulan sistemde ikinci girişte uygulamalar kendiliğinden açılıyordu** (ör. hoş geldin
+  sayfasını gösteren Chromium penceresi ve açık bırakılan Konsole). Sebep, Plasma'nın
+  varsayılan oturum davranışıydı (`restorePreviousLogout` — kapatma anında açık olan
+  uygulamaları geri yükler). Sistem geneli `etc/xdg/ksmserverrc` ile varsayılan
+  `emptySession` yapıldı: her oturum temiz başlar. Kullanıcı dilerse Sistem Ayarları →
+  Başlangıç ve Kapanış → Masaüstü Oturumu'ndan kendi tercihine çevirebilir.
+
+## [1.0.0] "Dardania" - 2026-07-22
+
+İlk resmî, imzalı ve otomatik üretilen sürüm.
+
 ### Eklendi — Resmîleşme katmanı (R1–R4)
 - `LICENSE` (GPL-3.0), `TRADEMARK.md` (isim/logo marka politikası), `NOTICE.md` (üçüncü
   taraf atıfları).
@@ -12,8 +30,11 @@ proje [Anlamsal Sürümleme](https://semver.org/lang/tr/) (SemVer) kullanır.
   şablonları.
 - Sürümleme: `VERSION` dosyası (SemVer + kod adı) ve `profiledef.sh` içinde geriye-uyumlu
   `SHALAOS_VERSION` env desteği.
-- CI/CD: tag'e basınca ISO üreten, SHA-256 sağlaması ve GPG imzası ekleyip GitHub Release
-  oluşturan `build-iso.yml`; `shellcheck` çalıştıran `lint.yml`; Pages dağıtan `pages.yml`.
+- CI/CD: tag'e basınca ISO üreten, SHA-256 sağlaması ve GPG imzası ekleyen `build-iso.yml`;
+  `shellcheck` çalıştıran `lint.yml`; Pages dağıtan `pages.yml`; SourceForge bağlantısını
+  ISO derlemeden doğrulayan `sf-test.yml`.
+- Barındırma: ISO, GitHub'ın 2 GiB dosya sınırını aştığı için **SourceForge**'a yüklenir;
+  GitHub Release'e sağlama (`.sha256`), imza (`.sig`) ve indirme linki konur.
 - Tanıtım: yeniden yazılmış `README.md` (+ `README.en.md`), `docs/` GitHub Pages sitesi.
 - `docs/BUILD.md` (CI + VM derleme + GPG kurulum), `docs/kurulum.md`.
 
