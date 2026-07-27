@@ -172,6 +172,9 @@ jobs:
 
             Bu Release'e yalnızca sağlama (`.sha256`) ve imza (`.sig`) dosyaları eklenmiştir.
 
+            📋 **Bu sürümde ne değişti?** Sade dille anlatım:
+            [Sürüm notları](https://github.com/edizsale/shalaos/blob/main/docs/surum-notlari.md)
+
             ## Doğrulama (opsiyonel)
             ```bash
             sha256sum -c ${{ steps.meta.outputs.iso }}.sha256
