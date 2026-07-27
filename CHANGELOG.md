@@ -5,6 +5,12 @@ proje [Anlamsal Sürümleme](https://semver.org/lang/tr/) (SemVer) kullanır.
 
 ## [Yayımlanmadı]
 
+## [1.0.1] "Dardania" - 2026-07-27
+
+Bakım sürümü: kurulan sistemde oturum davranışı düzeltmesi. Kurulum, tema ve paket
+seti 1.0.0 ile aynıdır — mevcut kullanıcıların yeniden kurmasına gerek yoktur
+(düzeltme Sistem Ayarları'ndan da yapılabilir, bkz. aşağısı).
+
 ### Düzeltildi
 - **Kurulan sistemde ikinci girişte uygulamalar kendiliğinden açılıyordu** (ör. hoş geldin
   sayfasını gösteren Chromium penceresi ve açık bırakılan Konsole). Sebep, Plasma'nın
