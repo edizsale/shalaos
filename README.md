@@ -10,8 +10,9 @@
 [![Son sürüm](https://img.shields.io/github/v/release/edizsale/shalaos?display_name=release)](https://github.com/edizsale/shalaos/releases)
 [![ISO derleme](https://github.com/edizsale/shalaos/actions/workflows/build-iso.yml/badge.svg)](https://github.com/edizsale/shalaos/actions/workflows/build-iso.yml)
 
-[İndir](https://github.com/edizsale/shalaos/releases) ·
+[İndir](https://sourceforge.net/projects/shalaos/files/) ·
 [Kurulum](docs/kurulum.md) ·
+[Sürüm notları](docs/surum-notlari.md) ·
 [Derleme](docs/BUILD.md) ·
 [Katkı](CONTRIBUTING.md) ·
 [English](README.en.md)
@@ -44,6 +45,8 @@ tercih edilmiştir.
 
 **En güncel ISO'yu [SourceForge](https://sourceforge.net/projects/shalaos/files/)
 üzerinden indir, USB'ye yaz, başlat. Bu kadar.** Kurulum adımları: **[docs/kurulum.md](docs/kurulum.md)**.
+
+📋 Bu sürümde ne değişti? → **[Sürüm notları](docs/surum-notlari.md)** (sade dille anlatım)
 
 > ISO, boyutu nedeniyle SourceForge'da barındırılır; sağlama (`.sha256`) ve GPG imza (`.sig`)
 > dosyaları [GitHub Releases](https://github.com/edizsale/shalaos/releases)'tedir.
