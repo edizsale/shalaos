@@ -119,3 +119,8 @@ Katkılar açıktır — bkz. [CONTRIBUTING.md](CONTRIBUTING.md) ve
 Kaynak kod **[GPL-3.0](LICENSE)** altındadır. **"ShalaOS" adı, kırmızı kartal logosu ve
 görsel kimlik** ise korunur — bkz. [TRADEMARK.md](TRADEMARK.md). Üçüncü taraf atıfları:
 [NOTICE.md](NOTICE.md).
+
+ShalaOS, Arch Linux'tan **türetilmiş** bağımsız bir dağıtımdır; Arch Linux projesi
+tarafından onaylanmış veya desteklenmiş değildir. ISO'daki paketler yukarı-akıştan
+değiştirilmeden gelir; GPL bileşenlerinin **kaynak koduna nasıl ulaşılacağı**
+[NOTICE.md → Kaynak Koda Erişim](NOTICE.md#kaynak-koda-erişim-gpl-uyumu) bölümündedir.

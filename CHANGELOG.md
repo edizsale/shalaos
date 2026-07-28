@@ -5,6 +5,15 @@ proje [Anlamsal Sürümleme](https://semver.org/lang/tr/) (SemVer) kullanır.
 
 ## [Yayımlanmadı]
 
+### Eklendi
+- `NOTICE.md`: **Kaynak Koda Erişim (GPL uyumu)** bölümü — ISO'daki GPL bileşenlerinin
+  kaynağına nereden ulaşılacağı bileşen bazında tablolandı (GPLv3 §6(d)). ShalaOS'un
+  yukarı-akış paketlerini değiştirmediği açıkça belirtildi. Ayrıca özgür olmayan ama
+  yeniden dağıtılabilir bileşenler (`linux-firmware`, `broadcom-wl`) hakkında dürüst not.
+- `README.md` / `README.en.md`: ShalaOS'un Arch Linux'tan **türetildiği**, Arch projesi
+  tarafından onaylanmadığı ibaresi (Arch marka politikasının önerdiği ifade) ve kaynak
+  erişim bölümüne bağlantı.
+
 ## [1.0.1] "Dardania" - 2026-07-27
 
 Bakım sürümü: kurulan sistemde oturum davranışı düzeltmesi. Kurulum, tema ve paket

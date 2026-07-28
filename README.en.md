@@ -98,3 +98,8 @@ Two ways — automated CI (on tag push) and manual VM build. See **[docs/BUILD.m
 Source code is under **[GPL-3.0](LICENSE)**. The **"ShalaOS" name, red eagle logo and visual
 identity** are protected — see [TRADEMARK.md](TRADEMARK.md). Third-party attributions:
 [NOTICE.md](NOTICE.md).
+
+ShalaOS is an independent distribution **derived from Arch Linux**; it is not endorsed by or
+affiliated with the Arch Linux project. Packages ship unmodified from upstream; see
+[NOTICE.md → Source Code Availability](NOTICE.md#kaynak-koda-erişim-gpl-uyumu) for how to
+obtain the corresponding source of GPL components.
