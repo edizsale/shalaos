@@ -5,6 +5,43 @@ ShalaOS'ta her sürümde ne değiştiğini **sade bir dille** anlatır. Teknik a
 
 ---
 
+## ShalaOS 1.0.2 "Dardania" — 28 Temmuz 2026
+
+**Kısaca:** Kurulumdan sonra klavyenin Türkçe kalmaması düzeltildi. Yeni özellik yok.
+
+### Ne düzeldi?
+
+**Kurulumda Türkçe klavye seçiyordun ama sistem açılınca klavye İngilizce oluyordu.**
+
+`ğüşiöç` harfleri yazılmıyor, noktalama tuşları yanlış yere düşüyordu. Düzeltmek için
+Sistem Ayarları'na girip klavyeyi elle eklemek gerekiyordu — ilk açılışta karşılaşılacak
+en sinir bozucu şeylerden biri.
+
+Sebep teknikti: ShalaOS'un masaüstü ortamı klavye ayarını bir dosyadan okuyor, kurulum
+programı ise başka bir dosyaya yazıyordu. İkisi birbirini görmüyordu. Artık kurulum,
+seçtiğin düzeni doğru yere de yazıyor.
+
+**Artık:** Kurulumda hangi klavyeyi seçtiysen, sistem o klavyeyle açılır. Ayarlara girmene
+gerek yok.
+
+> Not: Bu yalnızca Türkçe için değil — Almanca, Fransızca, hangi düzeni seçersen o gelir.
+
+### Bu bende de oluyor, ne yapmalıyım?
+
+**Yeniden kurmana gerek yok.** Zaten elle düzelttiysen bir şey yapmana gerek yok; ayarın
+korunur.
+
+Henüz düzeltmediysen iki seçenek:
+
+**Seçenek 1 — Ayarlardan (hızlı):**
+1. Sistem Ayarları → **Klavye** → **Düzenler**
+2. **Düzenleri yapılandır**'ı işaretle, **Ekle** ile *Türkçe*'yi ekle
+3. Uygula
+
+**Seçenek 2 — Yeni sürümü kur:** 1.0.2 ISO'sunda bu ayar kurulumdan itibaren doğru gelir.
+
+---
+
 ## ShalaOS 1.0.1 "Dardania" — 27 Temmuz 2026
 
 **Kısaca:** Küçük ama can sıkıcı bir sorun düzeltildi. Yeni özellik yok; kurulum, tema ve

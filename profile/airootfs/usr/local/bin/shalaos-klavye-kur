@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Calamares'in yazdigi X11 klavye ayarini, Plasma'nin (Wayland oturumunda)
+# gercekten okudugu kxkbrc'ye cevirir.
+#
+# NEDEN: ShalaOS'ta xorg-server yok, Plasma Wayland oturumunda calisir.
+# Calamares'in "keyboard" modulu yalnizca /etc/X11/xorg.conf.d/00-keyboard.conf
+# ve /etc/vconsole.conf yazar. X11 dosyasi Wayland'de Plasma'nin klavye
+# duzenini belirlemez -> kurulan sistemde secilen duzen (or. tr) kaybolur ve
+# kullanici Sistem Ayarlari'ndan elle duzeltmek zorunda kalirdi.
+#
+# Kullanicinin kurulumda SECTIGI duzen korunur; buraya "tr" gomulmez.
+# X11 dosyasi okunamazsa hicbir sey yapilmaz ve canli ortamdan gelen
+# /etc/xdg/kxkbrc varsayilani (tr) yerinde kalir.
+set -uo pipefail
+
+X11_CONF="/etc/X11/xorg.conf.d/00-keyboard.conf"
+HEDEF="/etc/xdg/kxkbrc"
+
+# 00-keyboard.conf icindeki: Option "XkbLayout" "tr"  ->  tr
+oku() {
+    [ -r "$X11_CONF" ] || return 0
+    sed -n "s/.*Option[[:space:]]\{1,\}\"$1\"[[:space:]]\{1,\}\"\([^\"]*\)\".*/\1/p" \
+        "$X11_CONF" 2>/dev/null | head -n1
+}
+
+DUZEN="$(oku XkbLayout)"
+VARYANT="$(oku XkbVariant)"
+MODEL="$(oku XkbModel)"
+SECENEK="$(oku XkbOptions)"
+
+if [ -z "$DUZEN" ]; then
+    echo "shalaos-klavye-kur: $X11_CONF icinde XkbLayout yok; kxkbrc'ye dokunulmuyor." >&2
+    exit 0
+fi
+
+[ -n "$MODEL" ] || MODEL="pc105"
+
+mkdir -p "$(dirname "$HEDEF")"
+cat > "$HEDEF" <<SON
+# ShalaOS: klavye duzeni kurulum sirasinda secilenden turetildi.
+# Kullanici Sistem Ayarlari > Klavye'den degistirebilir (~/.config/kxkbrc bunu ezer).
+[Layout]
+Use=true
+LayoutList=$DUZEN
+VariantList=$VARYANT
+Model=$MODEL
+Options=$SECENEK
+ResetOldOptions=true
+DisplayNames=
+SON
+
+echo "shalaos-klavye-kur: klavye duzeni '$DUZEN' kxkbrc'ye yazildi." >&2

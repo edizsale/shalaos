@@ -1,6 +1,6 @@
 # R6 — ShalaOS Paket Deposu (tasarım belgesi)
 
-> **Durum:** Plan. Henüz uygulanmadı. Hedef sürüm: **v1.0.2**.
+> **Durum:** Plan. Henüz uygulanmadı. Hedef sürüm: **v1.0.3**.
 > Bu bir geliştirici belgesidir; son kullanıcıyı ilgilendirmez.
 
 ## 1. Problem
@@ -195,9 +195,9 @@ Depo + anahtarlık geçişi, yanlış yapılırsa kullanıcının `pacman -Syu` 
 türden bir değişiklik. Bu yüzden **tek seferde v1.0.2'ye sıkıştırmak yerine** şu bölünme
 önerilir:
 
-- **v1.0.2** — Adım 1–2: paketler üretilir, depo yayına alınır ve *bağımsız olarak* test
+- **v1.0.3** — Adım 1–2: paketler üretilir, depo yayına alınır ve *bağımsız olarak* test
   edilir. ISO henüz depoya bağlanmaz (davranış değişmez, risk sıfır).
-- **v1.0.3** — Adım 3–5: ISO depoya bağlanır, airootfs temizlenir. Asıl kazanç burada.
+- **v1.0.4** — Adım 3–5: ISO depoya bağlanır, airootfs temizlenir. Asıl kazanç burada.
 
 Böylece depo altyapısı gerçek kullanımdan önce kanıtlanmış olur. Karar kullanıcıya ait;
 tek sürümde de yapılabilir, sadece VM testi daha kapsamlı olmalı.
