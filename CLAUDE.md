@@ -115,7 +115,7 @@ DEĞİŞMEZ** (yalnızca profiledef.sh'e geriye-uyumlu sürüm kancası eklendi)
 
 ### v1.0.x sonrası fikirler (henüz UYGULANMADI — plan)
 
-- **R6 — ShalaOS paket deposu — DETAYLI TASARIM: `docs/R6-paket-deposu.md`** (hedef v1.0.2).
+- **R6 — ShalaOS paket deposu — DETAYLI TASARIM: `docs/R6-paket-deposu.md`** (hedef v1.0.3).
   Uygulamadan önce o belgeyi oku; paket ayrımı, `/usr/local` yasağı, `backup=()` kararı,
   `[shalaos]` bloğunun EOS işaretlerinin dışında kalması ve migrasyon sırası orada.
   Özet (kullanıcı isteği 22 Tem 2026):

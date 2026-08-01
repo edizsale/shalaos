@@ -2,5 +2,5 @@
 # CI bu dosyayı `source` eder; VM'de elle derlerken de kaynak alınabilir:
 #   set -a; . ./VERSION; set +a; ./build.sh
 # Böylece profiledef.sh iso_version'ı SHALAOS_VERSION'dan alır (yoksa tarih bazlı).
-SHALAOS_VERSION=1.0.1
+SHALAOS_VERSION=1.0.2
 SHALAOS_CODENAME=Dardania

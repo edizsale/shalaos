@@ -31,6 +31,9 @@ Mevcut Debian VM'ine dokunma; kurulum testi için **ayrı** bir VM aç
 - [ ] SDDM **şifre soruyor** (otomatik giriş OLMAMALI); kurulumdaki kullanıcıyla açılıyor.
 - [ ] `id shala` → "no such user" (canlı kullanıcı temizlenmiş).
 - [ ] Koyu tema + duvar kağıdı geliyor; panelde başlat düğmesi **ShalaOS logosu**.
+- [ ] **Klavye düzeni korunuyor (regresyon — v1.0.1'de hata vardı):** kurulumda seçilen
+      düzenle açılıyor; `ğüşiöç` yazılabiliyor. Ayarlara girmeye gerek YOK.
+      Doğrulama: `cat /etc/xdg/kxkbrc` → `LayoutList=tr` (ya da kurulumda ne seçildiyse).
 - [ ] Açılışta **Plymouth**: dönen çember + ShalaOS logosu (UEFI'de üretici logosu üstte;
       kaydırmalı metin GÖRÜNMEMELİ).
 - [ ] İlk girişte **"ShalaOS'e Hoş Geldiniz"** sayfası açılıyor; kapanınca bir daha gelmiyor.

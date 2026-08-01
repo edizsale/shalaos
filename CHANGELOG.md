@@ -5,6 +5,25 @@ proje [Anlamsal Sürümleme](https://semver.org/lang/tr/) (SemVer) kullanır.
 
 ## [Yayımlanmadı]
 
+## [1.0.2] "Dardania" - 2026-07-28
+
+Bakım sürümü: kurulan sistemde klavye düzeni düzeltmesi.
+
+### Düzeltildi
+- **Kurulumda seçilen klavye düzeni (ör. Türkçe) kurulan sistemde sıfırlanıyordu.**
+  ShalaOS'ta `xorg-server` kurulu değildir; Plasma **Wayland** oturumunda çalışır.
+  Calamares'in `keyboard` modülü düzeni yalnızca `/etc/X11/xorg.conf.d/00-keyboard.conf`
+  ve `/etc/vconsole.conf` dosyalarına yazar — Wayland'de Plasma'nın klavye düzenini
+  belirleyen dosya ise `kxkbrc`'dir. Bu yüzden seçilen düzen masaüstü oturumuna geçmiyor,
+  kullanıcı Sistem Ayarları'ndan elle düzeltmek zorunda kalıyordu.
+  - Yeni `usr/local/bin/shalaos-klavye-kur`, Calamares'in yazdığı düzen/varyant/modeli
+    okuyup sistem geneli `/etc/xdg/kxkbrc`'ye çevirir. **Kullanıcının seçtiği düzen
+    korunur** — Türkçe zorla dayatılmaz (Almanca seçen Almanca alır).
+  - Calamares zincirine `shellprocess@klavye` adımı eklendi (`keyboard`/`localecfg`
+    sonrası çalışır).
+  - Canlı ortam için `etc/xdg/kxkbrc` varsayılanı (`tr`) eklendi; aynı zamanda
+    X11 yapılandırması okunamazsa güvenli geri-düşüş görevi görür.
+
 ### Eklendi
 - `NOTICE.md`: **Kaynak Koda Erişim (GPL uyumu)** bölümü — ISO'daki GPL bileşenlerinin
   kaynağına nereden ulaşılacağı bileşen bazında tablolandı (GPLv3 §6(d)). ShalaOS'un

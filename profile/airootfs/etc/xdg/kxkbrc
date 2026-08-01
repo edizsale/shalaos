@@ -1,0 +1,16 @@
+# ShalaOS: sistem geneli varsayilan klavye duzeni (Plasma / Wayland).
+#
+# Plasma Wayland oturumunda klavye duzenini /etc/X11/xorg.conf.d/00-keyboard.conf
+# degil, bu dosya belirler. Canli ortamda Turkce klavye buradan gelir.
+#
+# Kurulan sistemde bu dosya, kullanicinin kurulumda sectigi duzene gore
+# /usr/local/bin/shalaos-klavye-kur tarafindan yeniden yazilir.
+# Kullanici Sistem Ayarlari > Klavye'den degistirirse ~/.config/kxkbrc bunu ezer.
+[Layout]
+Use=true
+LayoutList=tr
+VariantList=
+Model=pc105
+Options=
+ResetOldOptions=true
+DisplayNames=
