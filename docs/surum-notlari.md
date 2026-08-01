@@ -5,7 +5,7 @@ ShalaOS'ta her sürümde ne değiştiğini **sade bir dille** anlatır. Teknik a
 
 ---
 
-## ShalaOS 1.0.2 "Dardania" — 28 Temmuz 2026
+## ShalaOS 1.0.2 "Dardania" — 1 Ağustos 2026
 
 **Kısaca:** Kurulumdan sonra klavyenin Türkçe kalmaması düzeltildi. Yeni özellik yok.
 

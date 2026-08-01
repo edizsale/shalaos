@@ -1,12 +1,13 @@
 name: Hatırlatıcı — v1.0.3 tag'i
 
-# 31 Temmuz 2026'da otomatik bir issue açar (kullanıcı isteği, 27 Tem 2026).
+# 8 Ağustos 2026'da otomatik bir issue açar.
+# (Kullanıcı 31 Temmuz istemişti; o tarih geçtiği için 8 Ağustos'a alındı.)
 # Amaç: R6 çalışması bittiğinde v1.0.3 sürümünü etiketlemeyi unutmamak.
 # Tek seferliktir — 2026 dışında hiçbir şey yapmaz. İşi bitince bu dosya silinebilir.
 
 on:
   schedule:
-    - cron: "12 7 31 7 *"   # 31 Temmuz 07:12 UTC ≈ 10:12 TR
+    - cron: "12 7 8 8 *"    # 8 Agustos 07:12 UTC ≈ 10:12 TR
   workflow_dispatch:         # elle test için
 
 permissions:
@@ -35,7 +36,7 @@ jobs:
             const body = [
               '## ⏰ v1.0.3 sürümünü etiketleme zamanı',
               '',
-              '27 Temmuz 2026\'da kurulan hatırlatıcı. Plan: **R6 — ShalaOS paket deposu**',
+              '1 Ağustos 2026\'de kurulan hatırlatıcı. Plan: **R6 — ShalaOS paket deposu**',
               'çalışmasını tamamlayıp `v1.0.3` etiketini atmak.',
               '',
               '📄 Tasarım belgesi: [`docs/R6-paket-deposu.md`](../blob/main/docs/R6-paket-deposu.md)',
