@@ -172,7 +172,12 @@ pre {
   text-transform: uppercase;
   color: var(--red);
 }
+.news-card + .news-card { margin-top: 0.9rem; }
 .news-card h3 { margin: 0.45rem 0 0.6rem; font-size: 1.3rem; }
+/* Eski surumler: daha sonik, dikkat son surumde kalsin */
+.news-onceki { border-left-color: var(--border); opacity: 0.72; }
+.news-onceki .news-tag { color: var(--muted); }
+.news-onceki h3 { font-size: 1.08rem; }
 .news-card p { margin: 0 0 0.8rem; color: var(--muted); }
 .news-hint { font-size: 0.93rem; }
 .news-hint strong { color: var(--text); }
