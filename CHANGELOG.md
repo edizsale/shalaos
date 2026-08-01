@@ -5,7 +5,7 @@ proje [Anlamsal Sürümleme](https://semver.org/lang/tr/) (SemVer) kullanır.
 
 ## [Yayımlanmadı]
 
-## [1.0.2] "Dardania" - 2026-07-28
+## [1.0.2] "Dardania" - 2026-08-01
 
 Bakım sürümü: kurulan sistemde klavye düzeni düzeltmesi.
 

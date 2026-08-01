@@ -30,3 +30,9 @@ jobs:
           # external-sources kapalı. Diğer betikler doğrudan denetlenir.
           shellcheck build.sh sync-dardania.sh
           shellcheck --shell=bash profile/profiledef.sh
+
+          # airootfs'teki ShalaOS betikleri (uzantısız oldukları için ayrıca listelenir).
+          # Bunlar kurulum sırasında root olarak çalışır — denetim dışı kalmamalı.
+          # severity=warning: mevcut kodda bilgi düzeyinde bulgular var (ör. SC2012),
+          # bunlar hata değil; gerçek uyarı/hatalarda derleme kırmızıya döner.
+          shellcheck --severity=warning profile/airootfs/usr/local/bin/shalaos-*
