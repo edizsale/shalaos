@@ -5,6 +5,36 @@ ShalaOS'ta her sürümde ne değiştiğini **sade bir dille** anlatır. Teknik a
 
 ---
 
+## ShalaOS 1.0.3 "Dardania" — 2 Ağustos 2026
+
+**Kısaca:** Başlat düğmesindeki logo yenilendi. Başka bir değişiklik yok.
+
+### Ne değişti?
+
+**Ekranın sol altındaki başlat düğmesi artık ShalaOS'un sadeleştirilmiş kartal amblemini
+gösteriyor.**
+
+Eski logomuz ayrıntılıydı; panelde 22 piksele kadar küçülünce kartal seçilemiyor, kırmızı
+bir lekeye dönüşüyordu. Küçükken de okunabilen, daha keskin hatlı bir amblem çizdik ve
+yalnızca başlat düğmesine koyduk.
+
+**Değişmeyenler:** Açılış ekranı, giriş ekranı, duvar kağıdı, kurulum aracı ve karşılama
+sayfası eski logoyla devam ediyor. Sadece başlat düğmesi yenilendi.
+
+### Bende neden değişmedi?
+
+Masaüstü panelinin görünümü, sistemi **ilk açtığında** bir kez kuruluyor; sonrasında
+paneli sen düzenleyesin diye ShalaOS ona karışmıyor. Yani:
+
+- **Yeni kuracaksan:** 1.0.3 ISO'sunda yeni amblem doğrudan gelir.
+- **Zaten kurulu sistemin varsa:** başlat düğmesi eski logoda kalır. Yeniden kurmana gerek
+  yok — istersen 10 saniyede elle değiştirebilirsin:
+  1. Başlat düğmesine **sağ tık** → **Uygulama Başlatıcı'yı Yapılandır**
+  2. Simge kutucuğuna tıkla, listeden **shalaos-baslat**'ı seç
+  3. Tamam
+
+---
+
 ## ShalaOS 1.0.2 "Dardania" — 1 Ağustos 2026
 
 **Kısaca:** Kurulumdan sonra klavyenin Türkçe kalmaması düzeltildi. Yeni özellik yok.
