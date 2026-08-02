@@ -1,8 +1,8 @@
-name: Hatırlatıcı — v1.0.3 tag'i
+name: Hatırlatıcı — v1.0.5 tag'i
 
 # 8 Ağustos 2026'da otomatik bir issue açar.
 # (Kullanıcı 31 Temmuz istemişti; o tarih geçtiği için 8 Ağustos'a alındı.)
-# Amaç: R6 çalışması bittiğinde v1.0.3 sürümünü etiketlemeyi unutmamak.
+# Amaç: R6 çalışması bittiğinde v1.0.5 sürümünü etiketlemeyi unutmamak.
 # Tek seferliktir — 2026 dışında hiçbir şey yapmaz. İşi bitince bu dosya silinebilir.
 
 on:
@@ -34,20 +34,20 @@ jobs:
         with:
           script: |
             const body = [
-              '## ⏰ v1.0.3 sürümünü etiketleme zamanı',
+              '## ⏰ v1.0.5 sürümünü etiketleme zamanı',
               '',
               '1 Ağustos 2026\'de kurulan hatırlatıcı. Plan: **R6 — ShalaOS paket deposu**',
-              'çalışmasını tamamlayıp `v1.0.3` etiketini atmak.',
+              'çalışmasını tamamlayıp `v1.0.5` etiketini atmak.',
               '',
               '📄 Tasarım belgesi: [`docs/R6-paket-deposu.md`](../blob/main/docs/R6-paket-deposu.md)',
               '',
               '### Etiketlemeden önce',
               '',
-              '- [ ] R6 kapsamı bitti mi? (Belgedeki öneri: **v1.0.3 = depoyu yayına al**,',
-              '      ISO\'yu henüz bağlama; ISO bağlama **v1.0.4**\'e kalsın — `pacman -Syu`',
+              '- [ ] R6 kapsamı bitti mi? (Belgedeki öneri: **v1.0.5 = depoyu yayına al**,',
+              '      ISO\'yu henüz bağlama; ISO bağlama **v1.0.6**\'e kalsın — `pacman -Syu`',
               '      akışını bozma riski bu şekilde ikiye bölünüyor.)',
-              '- [ ] `VERSION` → `1.0.3`',
-              '- [ ] `CHANGELOG.md` → `[Yayımlanmadı]` içeriği `[1.0.3]` başlığına taşındı',
+              '- [ ] `VERSION` → `1.0.5`',
+              '- [ ] `CHANGELOG.md` → `[Yayımlanmadı]` içeriği `[1.0.5]` başlığına taşındı',
               '- [ ] `docs/surum-notlari.md` → sade dille yeni bölüm eklendi',
               '- [ ] Değişiklikler `main`\'e merge edildi',
               '',
@@ -56,21 +56,21 @@ jobs:
               '```bash',
               'cd ~/shalaos',
               'git pull origin main',
-              'git tag -a v1.0.3 -m \'ShalaOS 1.0.3 "Dardania"\'',
-              'git push origin v1.0.3',
+              'git tag -a v1.0.5 -m \'ShalaOS 1.0.3 "Dardania"\'',
+              'git push origin v1.0.5',
               '```',
               '',
               'CI gerisini halleder: ISO üretimi → GPG imza → SourceForge → GitHub Release.',
               '',
               '---',
               '',
-              '_Bu issue `.github/workflows/hatirlatici-v1.0.3.yml` tarafından otomatik açıldı._',
+              '_Bu issue `.github/workflows/hatirlatici-v1.0.5.yml` tarafından otomatik açıldı._',
               '_Sürüm çıkınca hem bu issue hem o workflow dosyası kapatılıp silinebilir._',
             ].join('\n');
 
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: '⏰ Hatırlatma: v1.0.3 sürümünü etiketle (R6 paket deposu)',
+              title: '⏰ Hatırlatma: v1.0.5 sürümünü etiketle (R6 paket deposu)',
               body,
             });
