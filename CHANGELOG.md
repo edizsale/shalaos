@@ -5,6 +5,30 @@ proje [Anlamsal Sürümleme](https://semver.org/lang/tr/) (SemVer) kullanır.
 
 ## [Yayımlanmadı]
 
+## [1.0.4] "Dardania" - 2026-08-02
+
+Kurulum hatası düzeltmesi: kullanıcı adı olarak `shala` seçilemiyordu.
+
+### Düzeltildi
+- **Kurulumda kullanıcı adı `shala` verildiğinde kurulum `user shala already exists`
+  hatasıyla başarısız oluyordu.**
+  `unpackfs`, canlı ISO'nun squashfs'ini (`airootfs.sfs`) hedefe kopyalar; o görüntüdeki
+  `/etc/passwd` içinde canlı oturum kullanıcısı `shala` (uid 1000) tanımlıdır. Bu yüzden
+  `users` modülü çalıştığında hedef sistemde zaten bir `shala` bulunuyor, `useradd`
+  çakışıyordu. Kullanıcının silinmesi `shellprocess@cleanup` içindeydi ama o adım
+  `users`'tan **sonra** çalışıyordu.
+  - Yeni `shellprocess@canlikullanici` adımı (`users`'tan hemen önce) canlı kullanıcıyı
+    hedeften siler.
+  - `userdel -rf shala` satırı `shellprocess-cleanup.conf`'tan **kaldırıldı**. Orada
+    kalması, kullanıcı adı `shala` seçildiğinde yeni oluşturulan hesabı silme riski
+    taşıyordu.
+  - Yan fayda: uid 1000 boşaldığı için kurulan sistemdeki ilk kullanıcı 1001 yerine
+    **1000** alır.
+
+> Not: Bu hata boş diske kurulumda da oluşuyordu — mevcut bir ShalaOS'un üzerine kurmakla
+> ilgisi yoktu. Çakışan kayıt eski kurulumdan değil, canlı ISO'nun kendi görüntüsünden
+> geliyordu.
+
 ## [1.0.3] "Dardania" - 2026-08-02
 
 Görsel sürüm: panel başlat düğmesi için basitleştirilmiş kartal amblemi.

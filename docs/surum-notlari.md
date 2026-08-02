@@ -5,6 +5,37 @@ ShalaOS'ta her sürümde ne değiştiğini **sade bir dille** anlatır. Teknik a
 
 ---
 
+## ShalaOS 1.0.4 "Dardania" — 2 Ağustos 2026
+
+**Kısaca:** Kurulumda kullanıcı adı olarak `shala` yazanlarda kurulum hata veriyordu.
+Düzeltildi.
+
+### Ne düzeldi?
+
+**Kullanıcı adını `shala` seçtiğinde kurulum "user shala already exists" hatasıyla
+duruyordu.**
+
+Sebep şuydu: ShalaOS'un USB'den açılan canlı sürümü, sen hiçbir şey yapmadan önce
+kendi geçici hesabıyla açılır — bu hesabın adı `shala`. Kurulum, canlı sistemin bir
+kopyasını diske yazdığı için o geçici hesap da diske gidiyordu. Sonra "yeni kullanıcı
+oluştur" adımına gelindiğinde aynı adda bir hesap zaten orada duruyor, kurulum da
+"bu isim alınmış" diyordu.
+
+Geçici hesabı silen temizlik adımı vardı ama **yanlış yerde** — kullanıcı oluşturulduktan
+sonra çalışıyordu. Silme işlemi öne alındı.
+
+**Artık:** İstediğin kullanıcı adını seçebilirsin, `shala` dahil.
+
+> Bu hata boş diske kurulumda da oluşuyordu; eski bir ShalaOS'un üzerine kurmakla ilgisi
+> yoktu.
+
+### Kurulu sistemim var, etkilenir miyim?
+
+**Hayır.** Bu yalnızca kurulum anında yaşanan bir sorundu. Kurulumu tamamlayabildiysen
+sistemin sağlamdır, bir şey yapmana gerek yok.
+
+---
+
 ## ShalaOS 1.0.3 "Dardania" — 2 Ağustos 2026
 
 **Kısaca:** Başlat düğmesindeki logo yenilendi. Başka bir değişiklik yok.
