@@ -125,5 +125,12 @@ GitHub secret'ları:
 - `SOURCEFORGE_SSH_KEY` = private anahtarın **base64** hâli
 
 Yükleme hedefi: `frs.sourceforge.net:/home/frs/project/shalaos/v<sürüm>/`. İndirme linki:
-`https://sourceforge.net/projects/shalaos/files/v<sürüm>/<ISO>/download`. Kullanıcılar ISO'yu
+`https://downloads.sourceforge.net/project/shalaos/v<sürüm>/<ISO>`. Kullanıcılar ISO'yu
 SourceForge'dan indirir, sağlama/imzayı GitHub Release'ten alıp doğrular (`SECURITY.md`).
+
+> **Neden web arayüzü linki değil?** `sourceforge.net/projects/shalaos/files/.../download`
+> biçimindeki adres SourceForge'un web indeksine bağlıdır ve rsync yüklemesinin ardından
+> geriden gelir — v1.0.3'te ISO indirme sunucusundan sorunsuz inerken web arayüzü uzun süre
+> `404` verdi (aynı klasördeki 100 baytlık `.sha256` de dahil, yani boyutla ilgisi yok).
+> `downloads.sourceforge.net` doğrudan dosya sistemine bakıp mirror'u kendisi seçtiği için
+> yükleme biter bitmez çalışır.
