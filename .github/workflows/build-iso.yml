@@ -135,7 +135,13 @@ jobs:
           for s in out/*.iso.sig out/*.iso.sha256.sig; do [ -e "$s" ] && files+=("$s"); done
           rsync -avP -e "ssh -i ~/.ssh/sf_key -o StrictHostKeyChecking=yes" "${files[@]}" "$DEST"
           rm -f ~/.ssh/sf_key
-          echo "url=https://sourceforge.net/projects/shalaos/files/v$VER/$ISO/download" >> "$GITHUB_OUTPUT"
+          # İndirme bağlantısı web arayüzü (sourceforge.net/projects/.../download)
+          # yerine doğrudan indirme sunucusunu gösterir. Sebep: rsync dosyayı diske
+          # yazar ama SourceForge'un web indeksi geriden gelir; v1.0.3'te ISO
+          # mirror'dan sorunsuz inerken web arayüzü saatlerce 404 verdi (küçük
+          # .sha256 dosyası da dahil — yani boyut/yükleme sorunu değil, indeksleme).
+          # downloads.sourceforge.net dosya sistemine bakar, mirror'u kendi seçer.
+          echo "url=https://downloads.sourceforge.net/project/shalaos/v$VER/$ISO" >> "$GITHUB_OUTPUT"
 
       - name: Artefaktları yükle (yalnızca elle test çalıştırmasında)
         if: ${{ always() && !startsWith(github.ref, 'refs/tags/') }}
