@@ -5,6 +5,31 @@ proje [Anlamsal Sürümleme](https://semver.org/lang/tr/) (SemVer) kullanır.
 
 ## [Yayımlanmadı]
 
+## [1.0.3] "Dardania" - 2026-08-02
+
+Görsel sürüm: panel başlat düğmesi için basitleştirilmiş kartal amblemi.
+
+### Değişti
+- **Başlat düğmesi ikonu**, ShalaOS'un basitleştirilmiş kartal amblemiyle değiştirildi.
+  Tam logo (`shalaos`) 22–32 px'e indiğinde ayrıntıları kayboluyordu; panel için sade,
+  yüksek kontrastlı ayrı bir ikon üretildi.
+  - Yeni ikon adı **`shalaos-baslat`** — `hicolor` altında 16/22/24/32/48/64/128/256 px.
+  - dardania panel düzeni (`org.kde.plasma.desktop-layout.js`) artık bu adı yazıyor.
+  - **Diğer logolar değişmedi:** `shalaos` ikonu, `usr/share/pixmaps/shalaos-logo.png`,
+    Plymouth filigranı, SDDM arkaplanı, duvar kağıdı, Calamares markası ve hoş geldin
+    sayfası aynen korundu. Kurulum ve karşılama pencerelerinin ikonu hâlâ `shalaos`.
+
+### Eklendi
+- `tools/ikon-uret.py` — kaynak PNG'den hicolor ikon seti üreten betik (alfa korunur,
+  en-boy oranı bozulmaz, ≤32 px'te hafif keskinleştirme). Kaynak amblem:
+  `tools/kaynak/ShalaOS_Logo_Baslat.png`.
+
+### Bilinen sınırlama
+- Plasma panel düzenini yalnızca **ilk oturum açılışında** (boş
+  `plasma-org.kde.plasma.desktop-appletsrc`) uygular. Bu yüzden yeni ikon **yeni
+  kurulumlarda** görünür; 1.0.0–1.0.2 kurulu sistemlerde başlat düğmesi eski logoda kalır
+  (elle değiştirilebilir: düğmeye sağ tık → *Uygulama Başlatıcı'yı Yapılandır* → simge).
+
 ## [1.0.2] "Dardania" - 2026-08-01
 
 Bakım sürümü: kurulan sistemde klavye düzeni düzeltmesi.
